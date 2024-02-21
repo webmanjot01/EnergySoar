@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../assets/style/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style/custom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="../assets/js/bootstrap.bundle.min.js" defer></script>
+    <title>Document</title>
+
+</head>
+<body>
+    <section style="padding-block: 0.75rem">
+        <div class="container-fluid">
+            <h2>Case</h2>
+            <div class="table-responsive case-list case-list-main">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" /></th> <!-- Checkbox column -->
+                            <th>Status</th>
+                            <th><span>Number </span> <span> Title</span></th>
+                            <th>Severity</th>
+                            <th>Details</th>
+                            <th>Assignee</th>
+                            <th>Dates <span>S</span> <span>C</span> <span>U</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="caseTableBody">
+                        <!-- Table rows will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="pagination" id="paginationContainer"></div>
+        <div class="loader" id="loader">
+            <div class="loader-main"></div>
+        </div>
+    </section>
+</body>
+
+<script>
+
+function getEmailInitials(email) {
+    // Split the email address into parts based on "@"
+    var parts = email.split("@");
+
+    // If the email has only one part or doesn't contain a ".",
+    // consider it as a single name (e.g., "jakubg")
+    var name = parts[0];
+
+    // Split the name into parts based on "."
+    var nameParts = name.split(".");
+
+    // Take the first letter of the first name and the first letter of the last name
+    var initials = nameParts[0].charAt(0).toUpperCase();
+    if (nameParts.length > 1) {
+        initials += nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+    }
+
+    return initials;
+}
+
+var email = "jakubg@energysoar.local";
+var initials = getEmailInitials(email);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var caseTableBody = document.getElementById('caseTableBody');
+    var paginationContainer = document.getElementById('paginationContainer');
+    var totalCases = 0; // Initialize totalCases
+    var currentPage = 1;
+    var casesPerPage = 15;
+
+    // Function to fetch total count of cases
+    function fetchTotalCases() {
+        var countPayload = {
+            "query": [
+                {
+                    "_name": "listCase"
+                },
+                {
+                    "_name": "limitedCount"
+                }
+            ]
+        }
+        fetch('https://demo2.energysoar.com/base/api/v1/query?name=cases.count', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+            },
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(countPayload)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+            totalCases = data; // Update totalCases
+            console.log("Count", data)
+            fetchCases(); // Fetch cases after getting total count
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    fetchTotalCases()
+
+    // Function to fetch cases based on the current page
+    function fetchCases() {
+        // Show loader
+        var loader = document.getElementById('loader');
+        loader.style.display = 'flex';
+
+        var from = (currentPage - 1) * casesPerPage;
+        var to = currentPage * casesPerPage;
+
+        var payload = {
+            "query": [
+                {
+                    "_name": "listCase"
+                },
+                {
+                    "_name": "sort",
+                    "_fields": [
+                        {
+                            "flag": "desc"
+                        },
+                        {
+                            "startDate": "desc"
+                        }
+                    ]
+                },
+                {
+                    "_name": "page",
+                    "from": from,
+                    "to": to,
+                    "extraData": [
+                        "observableStats",
+                        "taskStats",
+                        "procedureCount",
+                        "isOwner",
+                        "shareCount",
+                        "permissions",
+                        "actionRequired"
+                    ]
+                }
+            ]
+        };
+
+        fetch('https://demo2.energysoar.com/base/api/v1/query?name=cases', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+            },
+            mode: 'cors',
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+            populateTableRows(data);
+            loader.style.display = 'none';
+        })
+        .catch(error => {
+        console.error('Error:', error)
+        loader.style.display = 'none';
+        });
+    }
+
+        // Function to populate table rows
+        function populateTableRows(data) {
+            // Clear existing table rows
+            caseTableBody.innerHTML = '';
+
+            data.forEach(caseData => {
+            var row = document.createElement('tr');
+
+            function formatTimestamp(timestamp) {
+                var date = new Date(timestamp);
+                var day = ('0' + date.getDate()).slice(-2); // Get day of the month and pad with leading zero if necessary
+                var month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-indexed, so we add 1 and pad with leading zero if necessary
+                var year = date.getFullYear().toString().slice(-2); // Get last two digits of the year
+                var hours = ('0' + date.getHours()).slice(-2); // Get hours and pad with leading zero if necessary
+                var minutes = ('0' + date.getMinutes()).slice(-2); // Get minutes and pad with leading zero if necessary
+                return day + '.' + month + '.' + year + ' ' + hours + '.' + minutes;
+            }
+
+            // Checkbox column
+            var checkboxCell = document.createElement('td');
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkboxCell.appendChild(checkbox);
+            row.appendChild(checkboxCell);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Status column
+            var statusCell = document.createElement('td');
+            var statusSpan = document.createElement('span');
+            statusSpan.textContent = caseData.status;
+            // Check the value of caseData.status and add the appropriate class
+            if (caseData.status === 'Open') {
+                statusSpan.classList.add( "status", 'danger');
+            } else if (caseData.status === 'Resolved') {
+                statusSpan.classList.add("status", 'success');
+            }
+            statusCell.appendChild(statusSpan);
+            // statusCell.textContent = caseData.status;
+
+            // Calculate the difference in months
+            var currentDate = new Date();
+            var startDate = new Date(caseData.startDate);
+            var monthDifference = (currentDate.getFullYear() - startDate.getFullYear()) * 12 + (currentDate.getMonth() - startDate.getMonth());
+
+            // Create a div to display the difference in months
+            var differenceDiv = document.createElement('div');
+            differenceDiv.classList.add("months")
+
+            // Set the text content to display the month difference along with the clock icon
+            differenceDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+            </svg>` + monthDifference + ' months';
+
+            // Append the difference div to the status cell
+            statusCell.appendChild(differenceDiv);
+
+            // Append the status cell to the row
+            row.appendChild(statusCell);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+            // Number and Title column ////////////////////////////////////////
+            var numberTitleCell = document.createElement('td');
+
+            // Create an a element to wrap the spans
+            var link = document.createElement('a');
+            link.href = '/case_html/tabs-content/tabs.html?id=' + caseData._id; // Add a placeholder href or specify the actual URL here
+
+            // Create the number span
+            var numberSpan = document.createElement('span');
+            numberSpan.classList.add("number");
+            numberSpan.textContent = '#' + caseData.number + ' ';
+
+            // Create the title span
+            var titleSpan = document.createElement('span');
+            titleSpan.classList.add("title");
+            titleSpan.textContent = caseData.title;
+
+            // Append the spans to the a tag
+            link.appendChild(numberSpan);
+            link.appendChild(titleSpan);
+
+            // Append the link to the numberTitleCell
+            numberTitleCell.appendChild(link);
+
+            // Create a div for tags
+            var tagsDiv = document.createElement('div');
+            tagsDiv.classList.add("tags-list")
+
+            // Create a span for the tags icon and append it to the tags div
+            var tagsIconSpan = document.createElement('span');
+            tagsIconSpan.innerHTML = '<i class="fa fa-tags"></i> ';
+            tagsDiv.appendChild(tagsIconSpan);
+
+            // Check if tags array is empty
+            if (caseData.tags && caseData.tags.length > 0) {
+                // Iterate over the tags array and create spans for each tag
+                caseData.tags.forEach(function(tag) {
+                    var tagSpan = document.createElement('span');
+                    tagSpan.textContent = tag;
+                    tagsDiv.appendChild(tagSpan);
+                });
+            } else {
+                // If tags array is empty, create a span with "None" and append it to the tags div
+                var noneTagsSpan = document.createElement('span');
+                noneTagsSpan.textContent = 'None';
+                tagsDiv.appendChild(noneTagsSpan);
+            }
+            
+
+            // Append the tags div to the numberTitleCell
+            numberTitleCell.appendChild(tagsDiv);
+
+
+            // Create a div for custom fields
+            var customFieldsDiv = document.createElement('div');
+            customFieldsDiv.classList.add('custom-list')
+
+            var icon = document.createElement('i');
+            icon.classList.add('fa', 'fa-code');
+            customFieldsDiv.appendChild(icon);
+            // Check if customFields array exists and is not empty
+            if (caseData.customFields && caseData.customFields.length > 0) {
+                // Iterate over the customFields array
+                caseData.customFields.forEach(function(field) {
+                    var paragraph = document.createElement('p');
+                    
+                    var nameSpan = document.createElement('span');
+                    nameSpan.textContent = field.name;
+                    
+                    var valueSpan = document.createElement('span');
+                    valueSpan.textContent = field.value;
+                    paragraph.appendChild(nameSpan);
+                    paragraph.appendChild(valueSpan);
+                    
+                    // Append the field div to the customFieldsDiv
+                    customFieldsDiv.appendChild(paragraph);
+                });
+            } else {
+                // If customFields array is empty, create a span with "None"
+                var noneCustomFieldsSpan = document.createElement('span');
+                noneCustomFieldsSpan.textContent = 'None';
+                customFieldsDiv.appendChild(noneCustomFieldsSpan);
+            }
+
+            // Append the customFieldsDiv to the numberTitleCell
+            numberTitleCell.appendChild(customFieldsDiv);
+
+            // Append the combined content to the row
+            row.appendChild(numberTitleCell);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Severity column////////////////////////////////////////
+            var severityCell = document.createElement('td');
+            var severitySpan = document.createElement('span');
+            if (caseData.severity === 1) {
+                severitySpan.textContent = 'L';
+                severitySpan.classList.add('severity-low');
+            } else if (caseData.severity === 2) {
+                severitySpan.textContent = 'M';
+                severitySpan.classList.add('severity-medium');
+            } else if (caseData.severity === 3) {
+                severitySpan.textContent = 'H';
+                severitySpan.classList.add('severity-high');
+            } else {
+                severitySpan.textContent = 'Unknown';
+            }
+            severityCell.appendChild(severitySpan);
+            row.appendChild(severityCell);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Details column////////////////////////////////////////////////////////////
+            var detailsCell = document.createElement('td');
+            var taskStatsDiv = document.createElement('div');
+            taskStatsDiv.classList.add("deails-content",  "tasks")
+            taskStatsDiv.textContent = 'Tasks: ' + caseData.extraData.taskStats.total;
+            var progressBar = document.createElement('div');
+            progressBar.classList.add('progress');
+
+            var totalTasks = caseData.extraData.taskStats.total;
+            var inProgressTasks = caseData.extraData.taskStats.InProgress || 0; // Assuming it defaults to 0 if not provided
+            var waitingTasks = caseData.extraData.taskStats.Waiting || 0; // Assuming it defaults to 0 if not provided
+
+            // Calculate percentages
+            var inProgressPercentage = ((inProgressTasks + waitingTasks) / totalTasks) * 100;
+            var completedPercentage = ((totalTasks - inProgressTasks - waitingTasks) / totalTasks) * 100;
+
+            // Create the progress bars
+            var inProgressProgressBar = document.createElement('div');
+            inProgressProgressBar.classList.add('progress-bar', 'bg-warning');
+            inProgressProgressBar.setAttribute('role', 'progressbar');
+            inProgressProgressBar.style.width = inProgressPercentage + '%';
+            inProgressProgressBar.textContent = inProgressPercentage.toFixed(2) + '%';
+            progressBar.appendChild(inProgressProgressBar);
+
+            var completedProgressBar = document.createElement('div');
+            completedProgressBar.classList.add('progress-bar', 'bg-success');
+            completedProgressBar.setAttribute('role', 'progressbar');
+            completedProgressBar.style.width = completedPercentage + '%';
+            completedProgressBar.textContent = completedPercentage.toFixed(2) + '%';
+            progressBar.appendChild(completedProgressBar);
+
+            // If all tasks are in progress, set the color to orange
+            if (inProgressTasks + waitingTasks === totalTasks) {
+                completedProgressBar.classList.remove('bg-success');
+                completedProgressBar.classList.add('bg-warning');
+            }
+
+            taskStatsDiv.appendChild(progressBar);
+            detailsCell.appendChild(taskStatsDiv);
+
+            var observableStatsDiv = document.createElement('div');
+            observableStatsDiv.classList.add("deails-content",  "observe")
+            observableStatsDiv.textContent = 'Observables: ' + caseData.extraData.observableStats.total;
+            var procedureCountDiv = document.createElement('div');
+            procedureCountDiv.classList.add("deails-content",  "ttps")
+            procedureCountDiv.textContent = 'TTPs: ' + caseData.extraData.procedureCount;
+            detailsCell.appendChild(observableStatsDiv);
+            detailsCell.appendChild(procedureCountDiv);
+
+            row.appendChild(detailsCell);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Assignee Initials column
+            var assigneeInitialsCell = document.createElement('td');
+
+            var assigneeDiv = document.createElement('span');
+            assigneeDiv.classList.add("assignee-avatar");
+            var assigneeEmail = caseData.assignee || ''; // Get the assignee's email from caseData or use an empty string if not provided
+            var assigneeInitials = getEmailInitials(assigneeEmail); // Use the previously defined function to get initials
+
+            assigneeDiv.textContent = assigneeInitials;
+
+            // Append assigneeDiv to assigneeInitialsCell
+            assigneeInitialsCell.appendChild(assigneeDiv);
+
+            // Append assigneeInitialsCell to row
+            row.appendChild(assigneeInitialsCell);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Start Date, Created At, and Updated At column
+            var datesCell = document.createElement('td');
+            // Create divs for each date
+            var startDateDiv = document.createElement('div');
+            startDateDiv.textContent = 'S. ' + formatTimestamp(caseData.startDate);
+            var createdAtDiv = document.createElement('div');
+            createdAtDiv.textContent = 'C. ' + formatTimestamp(caseData._createdAt);
+            var updatedAtDiv = document.createElement('div');
+            updatedAtDiv.textContent = 'U. ' + formatTimestamp(caseData._updatedAt);
+
+            // Append divs to the dates cell
+            datesCell.appendChild(startDateDiv);
+            datesCell.appendChild(createdAtDiv);
+            datesCell.appendChild(updatedAtDiv);
+
+            // Append the dates cell to the row
+            row.appendChild(datesCell);
+            caseTableBody.appendChild(row);
+        });
+
+            // Update pagination UI
+            updatePaginationUI();
+            createPaginationUI()
+        }
+
+       // Function to create pagination UI
+       function createPaginationUI() {
+    var totalPages = Math.ceil(totalCases / casesPerPage);
+
+    // Clear existing pagination
+    paginationContainer.innerHTML = '';
+
+    // Create and append "First" button
+    var firstButton = document.createElement('button');
+    firstButton.textContent = 'First';
+    firstButton.classList.add('pagination-button');
+    firstButton.dataset.page = 1;
+    if (currentPage === 1) {
+        firstButton.disabled = true; // Disable the "First" button if already on the first page
+    }
+    paginationContainer.appendChild(firstButton);
+
+    // Create and append page buttons
+    var startPage = Math.max(1, currentPage - 2); // Start showing page numbers two positions before the current page
+    var endPage = Math.min(totalPages, startPage + 4); // Show only 5 page numbers
+    for (var i = startPage; i <= endPage; i++) {
+        var pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.classList.add('pagination-button');
+        pageButton.dataset.page = i;
+        if (i === currentPage) {
+            pageButton.classList.add('active');
+        }
+        paginationContainer.appendChild(pageButton);
+    }
+
+    // Create and append "Last" button
+    var lastButton = document.createElement('button');
+    lastButton.textContent = 'Last';
+    lastButton.classList.add('pagination-button');
+    lastButton.dataset.page = totalPages;
+    if (currentPage === totalPages) {
+        lastButton.disabled = true; // Disable the "Last" button if already on the last page
+    }
+    paginationContainer.appendChild(lastButton);
+
+    // Add event listener to pagination buttons
+    paginationContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('pagination-button')) {
+            var page = parseInt(event.target.dataset.page);
+            currentPage = page;
+            fetchCases();
+            updatePaginationUI();
+        }
+    });
+}
+
+        // Function to update pagination UI
+        function updatePaginationUI() {
+            var pageButtons = paginationContainer.querySelectorAll('.pagination-button');
+            pageButtons.forEach(function(button) {
+                var page = parseInt(button.dataset.page);
+                if (page === currentPage) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // Fetch total count of cases and then fetch cases
+        fetchCases();
+    });
+</script>
+
+</html>
