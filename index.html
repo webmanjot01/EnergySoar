@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="./assets/style/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="./assets/style/custom.css">
+	<script src="./assets/js/bootstrap.bundle.min.js" defer></script>
+	<script
+		src="https://cdn.tiny.cloud/1/qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc/tinymce/6/tinymce.min.js"></script>
+	<title>Bootstrap 5 Nav-Fills Tabs</title>
+</head>
+
+<body>
+	<div class="login-container">
+		<h1 class="mb-3">Contact Us</h1>
+
+		<form id="loginForm">
+			<div class="mb-4">
+				<label for="username" class="form-label">Username/Email</label>
+				<input type="text" class="form-control" name="username" id="username" placeholder="Username">
+			</div>
+			<div class="mb-4">
+				<label for="password" class="form-label">Password</label>
+				<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+			</div>
+			<div class="mb-4">
+				<input type="checkbox" class="form-check-input" id="remember" />
+				<label for="remember" class="form-label">Remember Me</label>
+			</div>
+			<div class="d-grid">
+				<button type="submit" class="btn text-light main-bg">Login</button>
+			</div>
+		</form>
+	</div>
+
+
+</body>
+
+<script>
+	document.getElementById('loginForm').addEventListener('submit', function (event) {
+		event.preventDefault(); // Prevent form submission
+
+		// Get the username and password from the form
+		var username = document.getElementById('username').value;
+		var password = document.getElementById('password').value;
+
+		// Construct the request body
+		var requestBody = {
+			user: username,
+			password: password
+		};
+
+		// Send the login request
+		fetch('https://demo2.energysoar.com/base/api/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+			},
+			mode: 'cors',
+			body: JSON.stringify(requestBody)
+		})
+			.then(response => {
+				if (response.ok) {
+					// Handle successful login
+					return response.json(); // Parse the JSON response
+				} else {
+					// Handle failed login
+					console.error('Login failed');
+					throw new Error('Login failed'); // Throw an error to trigger the catch block
+				}
+			})
+			.then(data => {
+				// Log the response data
+				console.log('API response:', data);
+				localStorage.setItem("hasKey", data.hasKey);
+				localStorage.setItem("user_details", JSON.stringify(data))
+				window.location.href = 'tabs-content/case-list.html';
+
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+	});
+	if (localStorage.getItem("hasKey")) {
+		// document.getElementById('loginForm').style.display = 'none';
+		window.location.href = 'tabs-content/case-list.html';
+	}
+</script>
+
+
+</html>
