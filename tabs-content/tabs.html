@@ -1,0 +1,3667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/style/custom.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <link href="../assets/style/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.3/quill.snow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/jquery.datetimepicker.min.css" />
+  <script src="../assets/js/bootstrap.bundle.min.js" defer></script>
+  <title>Bootstrap 5 Nav-Fills Tabs</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="tabs-container">
+        <!-- Toggle button for small screens -->
+        <div class="col-12">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light hide-nav">
+            <div class="container-fluid">
+              <button class="btn btn-block" id="toggleBtn"><img src="../assets/img/menu-toggle.png" alt="menu-toggle" /></button>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <input placeholder="Search for something" />
+                    <span class="icon">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_42_146)">
+                          <path d="M11.8906 10.6688L9.12969 7.90781C9.81406 7.07344 10.2266 6.00469 10.2266 4.83984C10.2266 2.16797 8.05859 0 5.38672 0C2.7125 0 0.546875 2.16797 0.546875 4.83984C0.546875 7.51172 2.7125 9.67969 5.38672 9.67969C6.55156 9.67969 7.61797 9.26953 8.45234 8.58516L11.2133 11.3438C11.4008 11.5312 11.7031 11.5312 11.8906 11.3438C12.0781 11.1586 12.0781 10.8539 11.8906 10.6688ZM5.38672 8.71641C3.24687 8.71641 1.50781 6.97734 1.50781 4.83984C1.50781 2.70234 3.24687 0.960938 5.38672 0.960938C7.52422 0.960938 9.26562 2.70234 9.26562 4.83984C9.26562 6.97734 7.52422 8.71641 5.38672 8.71641Z" fill="#718EBF"/>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_42_146">
+                            <rect width="12" height="12" fill="white"/>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </span>
+                  </li>
+
+                  <li class="nav-item">
+                    <span class="text">EN</span>
+                  </li>
+
+                  <li class="nav-item">
+                    <span class="text">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.81567 1.80615V13.9937H7.96477V12.1187H8.90097V13.9937H14.0501V1.80615H2.81567ZM3.75187 2.74365H13.1139V13.0562H9.83717V11.1812H7.02857V13.0562H3.75187V2.74365ZM4.68807 3.68115V4.61865H6.56047V3.68115H4.68807ZM7.49667 3.68115V4.61865H9.36907V3.68115H7.49667ZM10.3053 3.68115V4.61865H12.1777V3.68115H10.3053ZM4.68807 5.55615V6.49365H6.56047V5.55615H4.68807ZM7.49667 5.55615V6.49365H9.36907V5.55615H7.49667ZM10.3053 5.55615V6.49365H12.1777V5.55615H10.3053ZM4.68807 7.43115V8.36865H6.56047V7.43115H4.68807ZM7.49667 7.43115V8.36865H9.36907V7.43115H7.49667ZM10.3053 7.43115V8.36865H12.1777V7.43115H10.3053ZM4.68807 9.30615V10.2437H6.56047V9.30615H4.68807ZM7.49667 9.30615V10.2437H9.36907V9.30615H7.49667ZM10.3053 9.30615V10.2437H12.1777V9.30615H10.3053ZM4.68807 11.1812V12.1187H6.56047V11.1812H4.68807ZM10.3053 11.1812V12.1187H12.1777V11.1812H10.3053Z" fill="black"/>
+                        </svg>                        
+                    </span>
+                  </li>
+
+                  <li>
+                    <div class="user-info">
+                      <img src="../assets/img/avatar.jpg" alt="avatar" />
+                      <!-- <div class="user-info-content">
+                        <p class="username"></p>
+                        <p class="user-org"></p>
+                      </div> -->
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+
+
+        <!-- Tabs and content -->
+        <div class="tabs-content-container d-md-flex show-tabs">
+          <ul class="nav flex-column left-tabs show slide-from-left" id="myTabs" role="tablist">
+            <div class="logo-img">
+              <img src="../assets/img/logo.png" alt="logo" />
+            </div>
+            
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24.3254 10.8738C24.3248 10.8732 24.3243 10.8727 24.3237 10.8721L14.1257 0.674438C13.691 0.239563 13.1131 0 12.4983 0C11.8836 0 11.3057 0.239372 10.8708 0.674248L0.678111 10.8667C0.674678 10.8702 0.671244 10.8738 0.667811 10.8772C-0.224828 11.775 -0.223302 13.2317 0.672198 14.1272C1.08132 14.5365 1.62168 14.7736 2.19941 14.7984C2.22287 14.8006 2.24652 14.8018 2.27037 14.8018H2.67682V22.3066C2.67682 23.7917 3.88513 25 5.37057 25H9.36036C9.76472 25 10.0928 24.6721 10.0928 24.2676V18.3838C10.0928 17.7061 10.644 17.1549 11.3217 17.1549H13.675C14.3527 17.1549 14.9039 17.7061 14.9039 18.3838V24.2676C14.9039 24.6721 15.2318 25 15.6363 25H19.6261C21.1115 25 22.3198 23.7917 22.3198 22.3066V14.8018H22.6967C23.3113 14.8018 23.8892 14.5624 24.3243 14.1275C25.2207 13.2305 25.2211 11.7714 24.3254 10.8738V10.8738Z" fill="white"/>
+                  </svg>
+                   Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.75 6.41663H10.5834V2.24996C10.5834 1.69742 10.3639 1.16752 9.97316 0.77682C9.58246 0.386119 9.05255 0.166626 8.50002 0.166626C7.94749 0.166626 7.41758 0.386119 7.02688 0.77682C6.63618 1.16752 6.41669 1.69742 6.41669 2.24996L6.49065 6.41663H2.25002C1.69749 6.41663 1.16758 6.63612 0.776881 7.02682C0.38618 7.41752 0.166687 7.94742 0.166687 8.49996C0.166687 9.05249 0.38618 9.5824 0.776881 9.9731C1.16758 10.3638 1.69749 10.5833 2.25002 10.5833L6.49065 10.5093L6.41669 14.75C6.41669 15.3025 6.63618 15.8324 7.02688 16.2231C7.41758 16.6138 7.94749 16.8333 8.50002 16.8333C9.05255 16.8333 9.58246 16.6138 9.97316 16.2231C10.3639 15.8324 10.5834 15.3025 10.5834 14.75V10.5093L14.75 10.5833C15.3026 10.5833 15.8325 10.3638 16.2232 9.9731C16.6139 9.5824 16.8334 9.05249 16.8334 8.49996C16.8334 7.94742 16.6139 7.41752 16.2232 7.02682C15.8325 6.63612 15.3026 6.41663 14.75 6.41663Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                  </svg>
+                   New Case</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                aria-selected="false">
+                <svg width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.95312 0.34375C1.30371 0.34375 0.78125 0.866211 0.78125 1.51562V3.85938C0.78125 4.50879 1.30371 5.03125 1.95312 5.03125H4.29688C4.94629 5.03125 5.46875 4.50879 5.46875 3.85938V1.51562C5.46875 0.866211 4.94629 0.34375 4.29688 0.34375H1.95312ZM9.375 1.125C8.51074 1.125 7.8125 1.82324 7.8125 2.6875C7.8125 3.55176 8.51074 4.25 9.375 4.25H23.4375C24.3018 4.25 25 3.55176 25 2.6875C25 1.82324 24.3018 1.125 23.4375 1.125H9.375ZM9.375 8.9375C8.51074 8.9375 7.8125 9.63574 7.8125 10.5C7.8125 11.3643 8.51074 12.0625 9.375 12.0625H23.4375C24.3018 12.0625 25 11.3643 25 10.5C25 9.63574 24.3018 8.9375 23.4375 8.9375H9.375ZM9.375 16.75C8.51074 16.75 7.8125 17.4482 7.8125 18.3125C7.8125 19.1768 8.51074 19.875 9.375 19.875H23.4375C24.3018 19.875 25 19.1768 25 18.3125C25 17.4482 24.3018 16.75 23.4375 16.75H9.375ZM0.78125 9.32812V11.6719C0.78125 12.3213 1.30371 12.8438 1.95312 12.8438H4.29688C4.94629 12.8438 5.46875 12.3213 5.46875 11.6719V9.32812C5.46875 8.67871 4.94629 8.15625 4.29688 8.15625H1.95312C1.30371 8.15625 0.78125 8.67871 0.78125 9.32812ZM1.95312 15.9688C1.30371 15.9688 0.78125 16.4912 0.78125 17.1406V19.4844C0.78125 20.1338 1.30371 20.6562 1.95312 20.6562H4.29688C4.94629 20.6562 5.46875 20.1338 5.46875 19.4844V17.1406C5.46875 16.4912 4.94629 15.9688 4.29688 15.9688H1.95312Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                </svg> My tasks
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                aria-selected="false">
+                <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.75 22.5C2.74871 20.843 3.21793 19.2197 4.10308 17.819C4.98823 16.4183 6.25291 15.2976 7.75 14.5875V10.4125C6.25291 9.70237 4.98823 8.58175 4.10308 7.181C3.21793 5.78026 2.74871 4.15698 2.75 2.5H0.25V0H22.75V2.5H20.25C20.2513 4.15698 19.7821 5.78026 18.8969 7.181C18.0118 8.58175 16.7471 9.70237 15.25 10.4125V14.5875C16.7471 15.2976 18.0118 16.4183 18.8969 17.819C19.7821 19.2197 20.2513 20.843 20.25 22.5H22.75V25H0.25V22.5H2.75ZM5.25 2.5C5.24971 3.94082 5.74723 5.33748 6.65837 6.45363C7.56951 7.56977 8.83829 8.33684 10.25 8.625V12.5H12.75V8.625C14.1617 8.33684 15.4305 7.56977 16.3416 6.45363C17.2528 5.33748 17.7503 3.94082 17.75 2.5H5.25Z" fill="#E9ECEF" fill-opacity="0.501961"/>               
+                </svg> Waiting tasks
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                aria-selected="false">
+                <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.8531 1.27917L21.8469 16.8563C21.984 17.0938 22.0562 17.3632 22.0562 17.6375C22.0562 17.9118 21.984 18.1812 21.8469 18.4187C21.7097 18.6563 21.5125 18.8535 21.275 18.9907C21.0375 19.1278 20.768 19.2 20.4937 19.2H2.50625C2.23197 19.2 1.96254 19.1278 1.72501 18.9907C1.48749 18.8535 1.29025 18.6563 1.15311 18.4187C1.01598 18.1812 0.943785 17.9118 0.943787 17.6375C0.943788 17.3632 1.01599 17.0938 1.15312 16.8563L10.1469 1.27917C10.7479 0.237508 12.251 0.237508 12.8531 1.27917ZM11.5 13.625C11.2237 13.625 10.9588 13.7348 10.7634 13.9301C10.5681 14.1255 10.4583 14.3904 10.4583 14.6667C10.4583 14.9429 10.5681 15.2079 10.7634 15.4032C10.9588 15.5986 11.2237 15.7083 11.5 15.7083C11.7763 15.7083 12.0412 15.5986 12.2366 15.4032C12.4319 15.2079 12.5417 14.9429 12.5417 14.6667C12.5417 14.3904 12.4319 14.1255 12.2366 13.9301C12.0412 13.7348 11.7763 13.625 11.5 13.625ZM11.5 6.33334C11.2449 6.33337 10.9986 6.42705 10.8079 6.59659C10.6173 6.76613 10.4955 6.99975 10.4656 7.25313L10.4583 7.37501V11.5417C10.4586 11.8072 10.5603 12.0625 10.7425 12.2556C10.9248 12.4487 11.1739 12.5648 11.4389 12.5804C11.704 12.596 11.965 12.5097 12.1686 12.3393C12.3722 12.1689 12.503 11.9272 12.5344 11.6635L12.5417 11.5417V7.37501C12.5417 7.09874 12.4319 6.83379 12.2366 6.63844C12.0412 6.44309 11.7763 6.33334 11.5 6.33334Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                </svg> Alerts
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                aria-selected="false">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_42_81)">
+                    <path d="M6.80557 13.0555H18.1945V15.1944H19.3056V11.9444H13.0556V9.72217H11.9445V11.9444H5.69446V15.1944H6.80557V13.0555Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                    <path d="M9.72225 15.9722H2.7778C2.01074 15.9722 1.38892 16.594 1.38892 17.3611V21.5277C1.38892 22.2948 2.01074 22.9166 2.7778 22.9166H9.72225C10.4893 22.9166 11.1111 22.2948 11.1111 21.5277V17.3611C11.1111 16.594 10.4893 15.9722 9.72225 15.9722Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                    <path d="M22.2222 15.9722H15.2778C14.5107 15.9722 13.8889 16.594 13.8889 17.3611V21.5277C13.8889 22.2948 14.5107 22.9166 15.2778 22.9166H22.2222C22.9893 22.9166 23.6111 22.2948 23.6111 21.5277V17.3611C23.6111 16.594 22.9893 15.9722 22.2222 15.9722Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                    <path d="M15.9722 2.08337H9.0278C8.26074 2.08337 7.63892 2.7052 7.63892 3.47226V7.63893C7.63892 8.40599 8.26074 9.02782 9.0278 9.02782H15.9722C16.7393 9.02782 17.3611 8.40599 17.3611 7.63893V3.47226C17.3611 2.7052 16.7393 2.08337 15.9722 2.08337Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_42_81">
+                      <rect width="25" height="25" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg> Workflows
+              </a>
+            </li>
+              
+
+            <li class="nav-item">
+              <a class="nav-link" id="ttp-tab" data-toggle="tab" href="#ttp" role="tab" aria-controls="ttp"
+                aria-selected="false">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_42_88)">
+                    <path d="M8.98438 0C10.4932 0 11.7188 1.22559 11.7188 2.73438V22.2656C11.7188 23.7744 10.4932 25 8.98438 25C7.57324 25 6.41113 23.9307 6.26465 22.5537C6.01074 22.6221 5.74219 22.6562 5.46875 22.6562C3.74512 22.6562 2.34375 21.2549 2.34375 19.5312C2.34375 19.1699 2.40723 18.8184 2.51953 18.4961C1.04492 17.9395 0 16.5137 0 14.8438C0 13.2861 0.913086 11.9385 2.23633 11.3135C1.81152 10.7812 1.5625 10.1074 1.5625 9.375C1.5625 7.87598 2.61719 6.62598 4.02344 6.31836C3.94531 6.0498 3.90625 5.76172 3.90625 5.46875C3.90625 4.00879 4.91211 2.77832 6.26465 2.43652C6.41113 1.06934 7.57324 0 8.98438 0ZM16.0156 0C17.4268 0 18.584 1.06934 18.7354 2.43652C20.0928 2.77832 21.0938 4.00391 21.0938 5.46875C21.0938 5.76172 21.0547 6.0498 20.9766 6.31836C22.3828 6.62109 23.4375 7.87598 23.4375 9.375C23.4375 10.1074 23.1885 10.7812 22.7637 11.3135C24.0869 11.9385 25 13.2861 25 14.8438C25 16.5137 23.9551 17.9395 22.4805 18.4961C22.5928 18.8184 22.6562 19.1699 22.6562 19.5312C22.6562 21.2549 21.2549 22.6562 19.5312 22.6562C19.2578 22.6562 18.9893 22.6221 18.7354 22.5537C18.5889 23.9307 17.4268 25 16.0156 25C14.5068 25 13.2812 23.7744 13.2812 22.2656V2.73438C13.2812 1.22559 14.5068 0 16.0156 0Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_42_88">
+                      <rect width="25" height="25" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg> Configure Plugins
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                aria-selected="false">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.1914 17.8711H19.4751C19.3579 17.8711 19.248 17.9223 19.1748 18.0127C19.0039 18.2202 18.8208 18.4204 18.6279 18.6108C17.8391 19.4004 16.9047 20.0297 15.8765 20.4638C14.8112 20.9138 13.6662 21.1446 12.5098 21.1426C11.3403 21.1426 10.2075 20.9131 9.14306 20.4638C8.11481 20.0297 7.18043 19.4004 6.39159 18.6108C5.60135 17.8239 4.97123 16.8911 4.53613 15.8642C4.08447 14.7998 3.85742 13.6694 3.85742 12.5C3.85742 11.3305 4.08691 10.2002 4.53613 9.13572C4.9707 8.10789 5.5957 7.18259 6.39159 6.38914C7.18749 5.59568 8.11279 4.97068 9.14306 4.53611C10.2075 4.08689 11.3403 3.8574 12.5098 3.8574C13.6792 3.8574 14.812 4.08445 15.8765 4.53611C16.9067 4.97068 17.832 5.59568 18.6279 6.38914C18.8208 6.58201 19.0015 6.7822 19.1748 6.98728C19.248 7.07761 19.3603 7.12888 19.4751 7.12888H21.1914C21.3452 7.12888 21.4404 6.95798 21.355 6.82859C19.4824 3.91843 16.206 1.99216 12.4829 2.00193C6.63329 2.01658 1.94335 6.76511 2.00195 12.6074C2.06054 18.3569 6.74316 22.998 12.5098 22.998C16.2231 22.998 19.4849 21.0742 21.355 18.1714C21.438 18.042 21.3452 17.8711 21.1914 17.8711ZM23.3618 12.3462L19.8975 9.61179C19.7681 9.50925 19.5801 9.60203 19.5801 9.7656V11.6211H11.9141C11.8066 11.6211 11.7187 11.709 11.7187 11.8164V13.1836C11.7187 13.291 11.8066 13.3789 11.9141 13.3789H19.5801V15.2344C19.5801 15.3979 19.7705 15.4907 19.8975 15.3882L23.3618 12.6538C23.3852 12.6355 23.404 12.6122 23.417 12.5855C23.43 12.5589 23.4367 12.5296 23.4367 12.5C23.4367 12.4703 23.43 12.4411 23.417 12.4144C23.404 12.3878 23.3852 12.3644 23.3618 12.3462Z" fill="#E9ECEF" fill-opacity="0.501961"/>
+                </svg> Logout
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content mt-3">
+            <div class="container-fluid">
+              <div id="case-info">
+                <div class="case-info-head">
+                  <h3 id=case-heading>
+                    <i class="fa fa-gavel"></i>
+                  </h3>
+                  <a href="">+  Show live stream</a>
+                </div>
+              </div>
+
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="card p-3 p-md-4">
+                  <h2 class="main-head">Details</h2>
+                  <h4 class="py-3 text-title">Basic Information</h4>
+                  <div class="row justify-content-between m-0 basic-section">
+                    <div class="basic-info col-lg-6">
+                      <div class="basic-form">
+                        <div class="row mb-3">
+                          <div class="col-md-3 col-sm-12">
+                            <strong class="w-25 fs-6 fw-bold">Title</strong>
+                          </div>
+                          <div class="col-md-9 col-sm-12">
+                            <div class="d-flex">
+                              <input id="titleInput" class="form-control" type="text" placeholder="Enter Title" />
+                              <span class="input-group-btn edit-btns">
+                                <button id="saveButton" class="btn btn-sm btn-default rounded-0" type="submit"> <i
+                                    class="bi bi-check-lg"></i> Save</button>
+                                <button id="cancelButton" class="btn btn-sm btn-default rounded-0" type="button"> <i
+                                    class="bi bi-x-lg"></i> Cancel</button>
+                              </span>
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-md-3 col-sm-12">
+                            <strong class="w-25 fs-6 fw-bold">Severity</strong>
+                          </div>
+                          <div class="col-md-9 col-sm-12">
+                            <ul id="severityList" class="w-75 list-unstyled d-flex gap-2">
+                              <li
+                                class="btn btn-info px-2 py-0 align-items-center justify-content-center rounded text-white text-uppercase severity-1"
+                                data-severity="1">
+                                <small>L</small>
+                              </li>
+                              <li
+                                class="label-default btn btn-warning px-2 py-0 align-items-center justify-content-center rounded text-white severity-2"
+                                data-severity="2">
+                                <small>M</small>
+                              </li>
+                              <li
+                                class="label-default btn btn-danger px-2 py-0 align-items-center justify-content-center rounded text-white severity-3"
+                                data-severity="3">
+                                <small>H</small>
+                              </li>
+                              <li
+                                class="label-default btn label-critical px-2 py-0 align-items-center justify-content-center rounded text-white severity-4"
+                                data-severity="4">
+                                <small>C</small>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-md-3 col-sm-12">
+                            <strong class="w-25 fs-6 fw-bold">TLP</strong>
+                          </div>
+                          <div class="col-md-9 col-sm-12">
+                            <ul id="tlpList" class=" list-unstyled  d-flex flex-wrap gap-2">
+                              <li
+                                class="label-default btn btn-info px-2 py-0 align-items-center justify-content-center rounded text-white text-uppercase tlp-1"
+                                data-tlp="1">
+                                <small>TLP: White</small>
+                              </li>
+                              <li
+                                class="label-default btn btn-success px-2 py-0 align-items-center justify-content-center rounded text-white text-uppercase tlp-2"
+                                data-tlp="2">
+                                <small>TLP: Green</small>
+                              </li>
+                              <li
+                                class="label-default btn btn-warning px-2 py-0 align-items-center justify-content-center rounded text-white text-uppercase tlp-3"
+                                data-tlp="3">
+                                <small>TLP: Amber</small>
+                              </li>
+                              <li
+                                class="label-default btn btn-danger px-2 py-0  align-items-center justify-content-center rounded text-white text-uppercase tlp-4"
+                                data-tlp="4">
+                                <small>TLP: Red</small>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-md-3 col-sm-12">
+                            <strong class="w-25 fs-6 fw-bold">PAP</strong>
+                          </div>
+                          <div class="col-md-9 col-sm-12">
+                            <ul id="papList" class=" list-unstyled d-flex  flex-wrap gap-2">
+                              <li
+                                class="label-default btn btn-info px-2 py-0 align-items-center justify-content-center rounded text-white text-uppercase pap-1"
+                                data-pap="1">
+                                <small>PAP: White</small>
+                              </li>
+                              <li
+                                class="label-default btn btn-success px-2 py-0 align-items-center justify-content-center rounded text-white text-uppercase pap-2"
+                                data-pap="2">
+                                <small>PAP: Green</small>
+                              </li>
+                              <li
+                                class="label-default btn btn-warning px-2 py-0 align-items-center justify-content-center rounded text-white text-uppercase pap-3"
+                                data-pap="3">
+                                <small>PAP: Amber</small>
+                              </li>
+                              <li
+                                class="label-default btn btn-danger px-2 py-0 align-items-center justify-content-center rounded text-white text-uppercase pap-4"
+                                data-pap="4">
+                                <small>PAP: Red</small>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-md-3 col-sm-12">
+                            <strong class="w-25 fs-6 fw-bold">Assignee</strong>
+                          </div>
+                          <div class="col-md-9 col-sm-12">
+                            <div class="d-flex">
+                              <select id="assigneeSelect" class="form-select"></select>
+                              <input id="assigneeInput" class="form-control" type="text" placeholder="Enter Title"
+                                style="display: none;" />
+                              <span class="input-group-btn assign-btns">
+                                <button id="saveAssignButton" class="btn btn-sm btn-default rounded-0" type="submit"> <i
+                                    class="bi bi-check-lg"></i></button>
+                                <button id="cancelAssignButton" class="btn btn-sm btn-default rounded-0" type="button">
+                                  <i class="bi bi-x-lg"></i> </button>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-md-3 col-sm-12">
+                            <strong class="w-25 fs-6 fw-bold">Date</strong>
+                          </div>
+                          <div class="col-md-9 col-sm-12">
+                            <div class="d-flex justify-content-between" id="dateTimeDiv">
+                              <input id="datetimepicker" type="text">
+                              <!-- <input id="dateInput" class="form-control" type="date" /> -->
+                              <span class="input-group-btn date-time-btns date-btns"> 
+                                <button id="dateSave" class="btn btn-sm btn-default rounded-0 " type="submit"> <i class="bi bi-check-lg"></i></button> 
+                                <button id="dateTimeCancel" class="btn btn-sm btn-default rounded-0" type="button" > <i class="bi bi-x-lg"></i> </button> 
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-md-3 col-sm-12">
+                            <strong class="w-25 fs-6 fw-bold">Tags:</strong>
+                          </div>
+                          <div id="tagsContainer" class="col-md-9 col-sm-12">
+                            <!-- Tags will be dynamically added here -->
+                          </div>
+
+                          <span class="input-group-btn tags-btns">
+                            <button id="tagsSave" class="btn btn-sm btn-default  rounded-0" type="submit"> <i
+                                class="bi bi-check-lg"></i></button>
+                            <button id="tagsCancel" class="btn btn-sm btn-default  rounded-0" type="button"> <i
+                                class="bi bi-x-lg"></i>
+                            </button>
+                          </span>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="w-auto">
+                            <strong class="w-25 fs-6 fw-bold">Close date</strong>
+                          </div>
+                          <div class="col-md-9 col-sm-12">
+                            <div class="d-flex justify-content-betwee">
+                              <!-- <input class="form-control" type="date" /> -->
+                              <input id="datetimeClosepicker" type="text">
+                              <!-- <span class="input-group-btn d-flex edit-btns">
+                                <button class="btn btn-sm btn-default  rounded-0" type="submit"> <i class="bi bi-check-lg"></i></button> 
+                                <button class="btn btn-sm btn-default  rounded-0" type="button" > <i class="bi bi-x-lg"></i> </button> 
+                              </span> -->
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-lg-4 right-tags mt-4 mt-lg-0">
+                      <h4 class="text-title  m-0 p-0 mb-3">Related cases </h4>
+                      <div class="" style="border-bottom: 1px dashed #ccc; padding-bottom: 20px;">
+                        <h5 class="mb-2">Newest <a href="">Case # 326 - suspicious email 04</a></h5>
+                        <p class="m-0 mt-1"> Created on <strong>28.09.22 17:53</strong></p>
+                        <p class="m-0 mt-1"> Shares<strong>1 observabl</strong></p>
+                        <div class="">
+                          <p class="m-0 my-1">Tagged as</p>
+                          <span class="label label-default label-tag">analyze_mail </span>
+                        </div>
+                      </div>
+                      <div class="my-3" style="border-bottom: 1px dashed #ccc; padding-bottom: 20px;">
+                        <h5 class="mb-2">Oldest <a href="">Case # 326 - suspicious email 04</a></h5>
+                        <p class="m-0 mt-1"> Created on <strong>28.09.22 17:53</strong></p>
+                        <p class="m-0 mt-1"> Shares<strong>1 observabl</strong></p>
+                        <div class="">
+                          <p class="m-0 my-1">Tagged as</p>
+                          <span class="label label-default label-tag">analyze_mail </span>
+                        </div>
+                      </div>
+                      <a class="text-decoration-none" href="">See all (54 related cases)</a>
+                    </div>
+                  </div>
+                  <div class="mt-4 additional-info px-3">
+                    <div class="row additional-info-heading align-items-center">
+                      <div class="w-auto p-0 mb-3">
+                        <h4 class="text-title m-0 p-0">Additional information </h4>
+                      </div>
+                      <div class="mb-3">
+                        <div class="row">
+                          <div class="w-auto">
+                            <div class="d-flex align-items-center w-auto">
+                              <i class="bi bi-plus-lg"></i>
+                              <select class="form-control border-0 w-auto">
+                                <option>automation</option>
+                                <option>Business impact</option>
+                                <option>CVSS</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="w-auto">
+                            <div class="d-flex align-items-center w-auto">
+                              <i class="bi bi-layout-split me-2"></i>
+                              <select class="form-control border-0 w-auto">
+                                <option>layout</option>
+                                <option>1 Column</option>
+                                <option>2 Column</option>
+                                <option>3 Column</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="customFields" class="row my-3 label-list"></div>
+                  </div>
+
+                  <div class="Description my-4">
+                    <h4 class="text-title m-0 p-0 mb-3">Description</h4>
+                    <!-- <div class="w-auto d-flex align-items-center description-container">
+                      <p id="description"></p>
+                      <i class="fas fa-pencil-alt"></i>
+                      
+                      
+                    </div> -->
+
+                    <div class="w-auto d-flex align-items-start description-container">
+                      <div class="desc-content">
+                        <p id="description"></p>
+                        <i id="editDescription" class="fas fa-pencil-alt"></i>
+                      </div>
+                      <div id="quill-container" style="display: none;">
+                        <div id="quill-editor-toolbar">
+                          <select class="ql-emailVars">
+                            <option value="1"></option>
+                            <option value="2"></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                            <option value="5"></option>
+                          </select>
+                          <select class="ql-header"></select>
+                          <button class="ql-header"></button>
+                          <button class="ql-color"></button>
+                          <button class="ql-background"></button>
+                          <button class="ql-bold"></button>
+                          <button class="ql-italic"></button>
+                          <button class="ql-underline"></button>
+                          <button class="ql-strike"></button>
+                          <span class="ql-format">
+                            <button class="ql-indent" value="-1" type="button"></button>
+                            <button class="ql-indent" value="+1" type="button"></button>
+                          </span>
+                          <button class="ql-indent"></button>
+                          <select class="ql-align"></select>
+                          <button class="ql-clean"></button>
+                          <button class="ql-link"></button>
+                          <button class="ql-image"></button>
+                          <button class="ql-showHtml"></button>
+                        </div>
+                        <div id="quill-editor"></div>
+
+                        <div class="quill-text-output"></div>
+                        <div class="quill-html-output"></div>
+                      </div>
+                      <span class="input-group-btn desc-btns edit-btns mt-2">
+                        <button id="desc-save" class="btn save btn-sm btn-default rounded-0" type="submit"> <i
+                            class="fas fa-check"></i></button>
+                        <button id="desc-cancel" class="btn cancel btn-sm btn-default rounded-0" type="button"> <i
+                            class="fas fa-times"></i> </button>
+                      </span>
+                    </div>
+
+                  </div>
+                  <div class="Description my-4">
+                    <h4 class="text-title m-0 p-0 mb-3">Summary</h4>
+                    <div class="w-auto d-flex align-items-start summary-container">
+                      <div class="summ-content">
+                        <p id="summary"></p>
+                        <i id="editsummary" class="fas fa-pencil-alt"></i>
+                      </div>
+                      <div id="quillSumm-container" style="display: none;">
+                        <div id="quillSumm-editor-toolbar">
+                          <select class="ql-emailVars">
+                            <option value="1"></option>
+                            <option value="2"></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                            <option value="5"></option>
+                          </select>
+                          <select class="ql-header"></select>
+                          <button class="ql-header"></button>
+                          <button class="ql-color"></button>
+                          <button class="ql-background"></button>
+                          <button class="ql-bold"></button>
+                          <button class="ql-italic"></button>
+                          <button class="ql-underline"></button>
+                          <button class="ql-strike"></button>
+                          <span class="ql-format">
+                            <button class="ql-indent" value="-1" type="button"></button>
+                            <button class="ql-indent" value="+1" type="button"></button>
+                          </span>
+                          <button class="ql-indent"></button>
+                          <select class="ql-align"></select>
+                          <button class="ql-clean"></button>
+                          <button class="ql-link"></button>
+                          <button class="ql-image"></button>
+                          <button class="ql-showHtml"></button>
+                        </div>
+                        <div id="quillSumm-editor"></div>
+
+                        <div class="quill-text-output"></div>
+                        <div class="quill-html-output"></div>
+                      </div>
+                      <span class="input-group-btn desc-btns edit-btns mt-2">
+                        <button id="descSumm-save" class="btn save btn-sm btn-default rounded-0" type="submit"> <i
+                            class="fas fa-check"></i></button>
+                        <button id="descSumm-cancel" class="btn cancel btn-sm btn-default rounded-0" type="button"> <i
+                            class="fas fa-times"></i> </button>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card p-3 p-md-4 tasks-main-container">
+
+                  <h2 style="margin-bottom: 1rem;" class="main-head">Tasks</h2>
+                  <div class="filter-main d-flex align-items-center justify-content-between">
+                    <div class="d-flex flex-column">
+                      <div class="task-div d-flex align-items-center gap-2">
+                        <div class="filter-container">
+                          <i class="fas fa-filter"></i>
+                          <select id="taskDropdown">
+                            <option class="default" selected>Quick Filters</option>
+                            <option value="InProgress">In Progress Tasks</option>
+                            <option value="Waiting">Waiting Tasks</option>
+                            <option value="Completed">Completed Tasks</option>
+                            <option value="Flagged">Flagged Tasks</option>
+                          </select>
+                        </div>
+                        <button id="add-task">Add Task</button>
+
+                      </div>
+
+
+                      <div id="selectedFilters"></div>
+                      <div id="addtaskMain">
+                        <select id="task-group" name="">
+                          <option value="" selected disabled>Task Group</option>
+                          <option value="communication">Communication</option>
+                          <option value="identification">Identification</option>
+                          <option value="containment">Containment</option>
+                          <option value="enrichment">Enrichment</option>
+                        </select>
+                        <div class="task-input">
+                          <input type="text" id="task-input-val" placeholder="Task Title">
+                          <button id="task-check-add"><i class="bi bi-check-lg"></i></button>
+                          <button id="task-check-cancel"><i class="bi bi-x-lg"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="right-side">
+                      <!-- <div id="addFilter">
+                      <button>Add Filter</button>
+                    </div> -->
+
+                      <select id="paginate" name="paginate">
+                        <option value="10">10</option>
+                        <option value="15" selected>15</option>
+                        <option value="30">30</option>
+                        <option value="100">100</option>
+                      </select>
+                      <span>Per Page</span>
+                    </div>
+                  </div>
+
+                  <div class="add-filters-container">
+                    <div class="add-filters">
+                      <button><i class="fa fa-plus"></i> Add Filter</button>
+                    </div>
+
+                    <div class="filter-input" id="assignee-input">
+                      <select name="" id="">
+                        <option value="empty">is empty</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                      <input type="text" id="assignee-input-value" placeholder="Enter assignee">
+                    </div>
+
+                    <div class="filter-input" id="endDate-input">
+                      <input type="date" id="startDate-input" placeholder="from">
+                      <input type="date" id="endDate-value-input" placeholder="to">
+                    </div>
+
+                    <div class="filter-input" id="description-input">
+                      <select name="" id="">
+                        <option value="empty">is empty</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                      <input type="text" id="description-input-value" placeholder="Enter a description">
+                    </div>
+                    <div class="tasks-filter-button">
+                      <button class="filter-input-button" id="searchFilter">Search</button>
+                    <button class="filter-input-button" id="clearFilters">Clear All</button>
+                    </div>
+                  </div>
+
+                  <!-- <div id="filter-field">
+                    <h5>Add Filter</h5>
+                  </div> -->
+                  <h4 class="feth-data" id="task-length"></h4>
+                  <div class="table-responsive case-task case-list"></div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="card p-3 p-md-4">
+                  <h2 style="margin-bottom: 1rem;" class="main-head">Observables</h2>
+                  <div class="filter-main d-flex align-items-center justify-content-between">
+                    <div class="right-side" style="margin-left: auto;">
+                      <!-- <div id="addFilter">
+                      <button>Add Filter</button>
+                    </div> -->
+
+                      <select id="observePaginate" name="paginate">
+                        <option value="10">10</option>
+                        <option value="15" selected>15</option>
+                        <option value="30">30</option>
+                        <option value="100">100</option>
+                      </select>
+                      <span>Per Page</span>
+                    </div>
+                  </div>
+                  <h4 class="feth-data" id="observe-length"></h4>
+                  <div class="table-responsive observe-list">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th><input type="checkbox" /></th> <!-- Checkbox column -->
+                          <th>Flags</th>
+                          <th>Type</th>
+                          <th>Value/Filename</th>
+                          <th>Dates <span>S</span> <span>C</span> <span>U</span></th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody id="observeTableBody">
+                        <!-- Table rows will be populated dynamically -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="ttp" role="tabpanel" aria-labelledby="ttp-tab">
+                <div class="card p-3 p-md-4">
+                  <h2 style="margin-bottom: 1rem;" class="main-head">Tactics, Techniques and Procedures</h2>
+                </div>
+                <div class="filter-main d-flex align-items-center justify-content-between">
+                  <div class="right-side" style="margin-left: auto;">
+                    <!-- <div id="addFilter">
+                    <button>Add Filter</button>
+                  </div> -->
+
+                    <select id="ttpPaginate" name="paginate">
+                      <option value="10">10</option>
+                      <option value="15" selected>15</option>
+                      <option value="30">30</option>
+                      <option value="100">100</option>
+                    </select>
+                    <span>Per Page</span>
+                  </div>
+                </div>
+                <h4 class="feth-data" id="ttp-length"></h4>
+                <div class="table-responsive ttp-list">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th><input type="checkbox" /></th> <!-- Checkbox column -->
+                        <th>Flags</th>
+                        <th>Type</th>
+                        <th>Value/Filename</th>
+                        <th>Dates <span>S</span> <span>C</span> <span>U</span></th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="ttpTableBody">
+                      <!-- Table rows will be populated dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap modal HTML -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+          <button type="button" id="closeIcon" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this item?
+        </div>
+        <div class="modal-footer">
+          <button id="closeButton" type="button" class="btn btn-secondary" aria-hidden="true"
+            data-dismiss="modal">Close</button> <!-- Added data-dismiss attribute -->
+          <button id="modalDeleteButton" type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
+<script src="http://cdn.craig.is/js/rainbow-custom.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.3/quill.min.js"></script>
+
+
+<script>
+  $(document).ready(function() {
+      $.datetimepicker;
+     $('#datetimepicker').datetimepicker();
+
+     $.datetimeClosepicker;
+     $('#datetimeClosepicker').datetimepicker();
+  });
+</script>
+
+<!-- FILTER TOGGLE -->
+<script>
+  // Get references to the button and the filter field
+  const toggleButton = document.getElementById('addFilter');
+  const filterField = document.getElementById('filter-field');
+
+  // Add event listener to the button
+  toggleButton.addEventListener('click', function () {
+    // Toggle the display property of the filter field
+    if (filterField.style.display === 'block') {
+      filterField.style.display = 'none';
+    } else {
+      filterField.style.display = 'block';
+    }
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get all the li elements in the first ul
+    const firstUlTabs = document.querySelectorAll('.left-tabs .nav-item');
+
+    // Get all the li elements in the second ul
+    const secondUlTabs = document.querySelectorAll('.navbar-nav .nav-item');
+
+    // Loop through each li element in the first ul
+    firstUlTabs.forEach((tab, index) => {
+      // Add click event listener to each tab
+      tab.addEventListener('click', function () {
+        // Remove 'active' class from all li elements in the second ul
+        secondUlTabs.forEach(secondTab => {
+          secondTab.querySelector('.nav-link').classList.remove('active');
+        });
+
+        // Add 'active' class to the corresponding tab in the second ul
+        secondUlTabs[index].querySelector('.nav-link').classList.add('active');
+
+        // Trigger click event on the corresponding tab in the second ul
+        secondUlTabs[index].querySelector('.nav-link').click();
+      });
+    });
+  });
+</script>
+
+
+<script>
+  // Retrieve userInfo from localStorage
+  const userInfo = JSON.parse(localStorage.getItem("user_details"));
+
+  // Check if userInfo is not null
+  if (userInfo) {
+    // Access name and organisation properties and populate the elements
+    const usernameElement = document.querySelector('.user-info .username');
+    if (usernameElement) {
+      usernameElement.textContent = userInfo.name || ''; // Populate username
+    }
+
+    const userOrgElement = document.querySelector('.user-info .user-org');
+    if (userOrgElement) {
+      userOrgElement.textContent = userInfo.organisation || ''; // Populate user organisation
+    }
+  }
+</script>
+
+<script>
+  $(document).ready(function () {
+    $('#flowIdBtns').hide();
+    $('#workflowInput').focus(function () {
+      $('#flowIdBtns').show();
+    });
+    $('#workflowInput').blur(function () {
+      $('#flowIdBtns').hide();
+    });
+
+    $('#executionIdBtns').hide();
+    $('#executionId').focus(function () {
+      $('#executionIdBtns').show();
+    });
+    $('#executionId').blur(function () {
+      $('#executionIdBtns').hide();
+    });
+
+    $('#mailRiskBtns').hide();
+    $('#mailRisk').focus(function () {
+      $('#mailRiskBtns').show();
+    });
+    $('#mailRisk').blur(function () {
+      $('#mailRiskBtns').hide();
+    });
+
+    $('#editBtnsStep').hide();
+    $('#workflowStepSelect').focus(function () {
+      $('#editBtnsStep').show();
+    });
+    $('#workflowStepSelect').blur(function () {
+      $('#editBtnsStep').hide();
+    });
+
+    $('#mailBtns').hide();
+    $('#mailAttachment').focus(function () {
+      $('#mailBtns').show();
+    });
+    $('#mailAttachment').blur(function () {
+      $('#mailBtns').hide();
+    });
+
+    $('.tags-btns').hide();
+
+    // Show the buttons when clicking on the tagsContainer
+    $('#tagsContainer').on('click', function () {
+      $('.tags-btns').show();
+      $('.tags-btns button').show();
+    });
+
+    $("#tagsCancel").click(function () {
+      $('.tags-btns').hide();
+    });
+
+    $('#assigneeSelect').focus(function () {
+      $('.assign-btns').show();
+    });
+
+    $('#cancelAssignButton').click(function () {
+      $('.assign-btns').hide();
+    });
+
+    $('#tagsCancel').click(function () {
+      $('.autocomplete-container').hide();
+    });
+
+    
+
+    $('#dateTimeDiv').click(function () {
+      $('.date-time-btns').show();
+    });
+
+    $('#dateTimeCancel').click(function () {
+      $('.date-time-btns').hide();
+    });
+  });
+
+</script>
+
+<!-- ID FROM URL -->
+<script>
+  // Function to parse URL parameters
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  }
+
+  // Get the value of the 'id' parameter from the URL
+  var caseId = getUrlParameter('id');
+
+  // Use caseId as needed
+  console.log('Case ID:', caseId);
+  localStorage.setItem("ID", caseId)
+</script>
+
+<!-- ICON TOGGLE -->
+<script>
+  // Toggle tabs function for small screens
+  document.getElementById('toggleBtn').addEventListener('click', function () {
+    $('.left-tabs').toggleClass('show'); // Toggle 'show' class
+    $('.tabs-content-container').toggleClass('show-tabs');
+    $('nav.navbar').toggleClass('hide-nav');
+    if (window.innerWidth <= 768) {
+      $('.left-tabs').toggleClass('slide-from-top'); // Slide animation on mobile
+    } else {
+      $('.left-tabs').toggleClass('slide-from-left'); // Slide animation on tablet/desktop
+    }
+  });
+</script>
+
+<!-- QUILL EDITOR DESCRIPTION -->
+<script>
+  this.quill = new Quill("#quill-editor", {
+    modules: {
+      toolbar: {
+        container: "#quill-editor-toolbar",
+        handlers: {
+          "emailVars": this.emailVars
+        }
+      }
+    },
+    theme: 'snow'
+  })
+
+  function emailVars(args) {
+    const value = args[0]
+    const cursorPosition = this.quill.getSelection().index
+
+    if (value == 1) {
+      this.quill.insertText(cursorPosition, "{AccountURL}")
+    } else if (value == 2) {
+      this.quill.insertText(cursorPosition, "{FirstName}")
+    } else if (value == 3) {
+      this.quill.insertText(cursorPosition, "{Login}")
+    } else if (value == 4) {
+      this.quill.insertText(cursorPosition, "{OrganizationName}")
+    } else if (value == 5) {
+      this.quill.insertText(cursorPosition, "{SupportEmail}")
+    } else {
+      this.quill.insertText(cursorPosition, "Please add an email variable.")
+    }
+
+    this.quill.setSelection(cursorPosition + value.length)
+  }
+
+  function PreviewHTML() {
+    const txtArea = document.createElement('textarea')
+    txtArea.style.cssText = "width: 100%;margin: 0px;background: rgb(29, 29, 29);box-sizing: border-box;color: rgb(204, 204, 204);font-size: 15px;outline: none;padding: 20px;line-height: 24px;font-family: Consolas, Menlo, Monaco, &quot;Courier New&quot;, monospace;position: absolute;top: 0;bottom: 0;border: none;display:none"
+
+    const htmlEditor = this.quill.addContainer('ql-custom')
+    htmlEditor.appendChild(txtArea)
+
+    const selfQuill = this.quill
+    const myEditor = document.querySelector('#quill-editor')
+
+    this.quill.on('text-change', function (delta, oldDelta, source) {
+      const text = selfQuill.root.innerHTML
+      const html = myEditor.children[0].innerHTML
+
+      txtArea.value = html
+
+      document.querySelector('.quill-text-output').innerText = text
+      document.querySelector('.quill-html-output').innerHTML = html
+    })
+
+    const customButton = document.querySelector('.ql-showHtml');
+    customButton.addEventListener('click', function () {
+      if (txtArea.style.display === '') {
+        const html = txtArea.value
+        selfQuill.pasteHTML(html)
+      }
+      txtArea.style.display = txtArea.style.display === 'none' ? '' : 'none'
+    })
+  }
+
+  PreviewHTML()
+</script>
+
+<!-- QUILL EDITOR SUMMARY -->
+<script>
+  this.quill = new Quill("#quillSumm-editor", {
+    modules: {
+      toolbar: {
+        container: "#quillSumm-editor-toolbar",
+        handlers: {
+          "emailVars": this.emailVars
+        }
+      }
+    },
+    theme: 'snow'
+  })
+
+  function emailVars(args) {
+    const value = args[0]
+    const cursorPosition = this.quill.getSelection().index
+
+    if (value == 1) {
+      this.quill.insertText(cursorPosition, "{AccountURL}")
+    } else if (value == 2) {
+      this.quill.insertText(cursorPosition, "{FirstName}")
+    } else if (value == 3) {
+      this.quill.insertText(cursorPosition, "{Login}")
+    } else if (value == 4) {
+      this.quill.insertText(cursorPosition, "{OrganizationName}")
+    } else if (value == 5) {
+      this.quill.insertText(cursorPosition, "{SupportEmail}")
+    } else {
+      this.quill.insertText(cursorPosition, "Please add an email variable.")
+    }
+
+    this.quill.setSelection(cursorPosition + value.length)
+  }
+
+  function PreviewHTML() {
+    const txtArea = document.createElement('textarea')
+    txtArea.style.cssText = "width: 100%;margin: 0px;background: rgb(29, 29, 29);box-sizing: border-box;color: rgb(204, 204, 204);font-size: 15px;outline: none;padding: 20px;line-height: 24px;font-family: Consolas, Menlo, Monaco, &quot;Courier New&quot;, monospace;position: absolute;top: 0;bottom: 0;border: none;display:none"
+
+    const htmlEditor = this.quill.addContainer('ql-custom')
+    htmlEditor.appendChild(txtArea)
+
+    const selfQuill = this.quill
+    const myEditor = document.querySelector('#quillSumm-editor')
+
+    this.quill.on('text-change', function (delta, oldDelta, source) {
+      const text = selfQuill.root.innerHTML
+      const html = myEditor.children[0].innerHTML
+
+      txtArea.value = html
+
+      document.querySelector('.quill-text-output').innerText = text
+      document.querySelector('.quill-html-output').innerHTML = html
+    })
+
+    const customButton = document.querySelector('.ql-showHtml');
+    customButton.addEventListener('click', function () {
+      if (txtArea.style.display === '') {
+        const html = txtArea.value
+        selfQuill.pasteHTML(html)
+      }
+      txtArea.style.display = txtArea.style.display === 'none' ? '' : 'none'
+    })
+  }
+
+  PreviewHTML()
+</script>
+
+<!-- DETAILS -->
+<script>
+  var id = localStorage.getItem("ID");
+  var selectedTags = []
+
+  function getDetails() {
+    if (id) {
+      // Construct the URL with the ID
+      var apiUrl = `https://demo2.energysoar.com/base/api/v1/query?name=get-case-${id}`;
+
+      // Define the headers
+      var headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0'
+      };
+
+      // Define the query object
+      var queryObject = {
+        query: [
+          {
+            "_name": "getCase",
+            "idOrName": localStorage.getItem("ID")
+          },
+          {
+            "_name": "page",
+            "from": 0,
+            "to": 1,
+            "extraData": [
+              "observableStats",
+              "taskStats",
+              "alerts",
+              "isOwner",
+              "shareCount",
+              "permissions"
+            ]
+          }
+        ]
+      };
+
+      // Fetch data from the API
+      fetch(apiUrl, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(queryObject)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Handle the JSON data returned from the API
+          console.log('API response:', data);
+
+          var caseInfoDiv = document.getElementById('case-info');
+          var h3Element = document.getElementById('case-heading');
+          h3Element.innerHTML += ` Case #${data[0].number} - ${data[0].title}`;
+
+
+          // Create a ul element to contain the username and other information
+          var ulElement = document.createElement('ul');
+          ulElement.classList.add('user-info-list')
+
+          // Extract the username from the email address
+          var email = data[0]._createdBy;
+          var username = email.substring(0, email.indexOf('@'));
+
+          // Create a li element for the username
+          var liUsername = document.createElement('li');
+          var usernameIcon = document.createElement('i');
+          usernameIcon.classList.add('fa', 'fa-user');
+          liUsername.appendChild(usernameIcon);
+          liUsername.innerHTML += ` ${username}`;
+          ulElement.appendChild(liUsername);
+
+          // Format the _createdAt timestamp
+          var createdAt = new Date(data[0]._createdAt);
+          var formattedCreatedAt = `${createdAt.getMonth() + 1}.${createdAt.getDate()}.${createdAt.getFullYear()} ${createdAt.getHours()}:${createdAt.getMinutes()}`;
+          var liCreatedAt = document.createElement('li');
+          var createdAtIcon = document.createElement('i');
+          createdAtIcon.classList.add('fa', 'fa-calendar');
+          liCreatedAt.appendChild(createdAtIcon);
+          liCreatedAt.innerHTML += `${formattedCreatedAt}`;
+          ulElement.appendChild(liCreatedAt);
+
+          // Format the _updatedAt timestamp
+          var updatedAt = new Date(data[0]._updatedAt);
+          var formattedUpdatedAt = `${updatedAt.getMonth() + 1}.${updatedAt.getDate()}.${updatedAt.getFullYear()} ${updatedAt.getHours()}:${updatedAt.getMinutes()}`;
+          var liUpdatedAt = document.createElement('li');
+          var updatedAtIcon = document.createElement('i');
+          updatedAtIcon.classList.add('fa', 'fa-calendar-check');
+          liUpdatedAt.appendChild(updatedAtIcon);
+          liUpdatedAt.innerHTML += `${formattedUpdatedAt}`;
+          ulElement.appendChild(liUpdatedAt);
+
+          // Convert _createdAt and _updatedAt timestamps to Date objects
+          var createdAt = new Date(data[0]._createdAt);
+          var updatedAt = new Date(data[0]._updatedAt);
+
+          // Calculate the difference in milliseconds between _createdAt and _updatedAt
+          var timeDifferenceMs = updatedAt.getTime() - createdAt.getTime();
+
+          // Convert the time difference from milliseconds to days
+          var timeDifferenceDays = Math.ceil(timeDifferenceMs / (1000 * 60 * 60 * 24));
+
+          // Create a li element for the time difference in days
+          var liTimeDifference = document.createElement('li');
+          var timeDifferenceIcon = document.createElement('i');
+          timeDifferenceIcon.classList.add('fa', 'fa-clock'); // Add Font Awesome icon class for clock
+          liTimeDifference.appendChild(timeDifferenceIcon); // Append the icon to the li element
+          liTimeDifference.innerHTML += `${timeDifferenceDays} days`;
+          ulElement.appendChild(liTimeDifference);
+
+          fetch('https://demo2.energysoar.com/base/api/case/' + localStorage.getItem("ID") + '/links', {
+            method: 'GET',
+            headers: headers
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(linksData => {
+              // Calculate the total length of the links data array
+              var totalLinks = linksData.length;
+
+              // Create a li element for the total number of links
+              var liTotalLinks = document.createElement('li');
+              var totalLinksIcon = document.createElement('i');
+              totalLinksIcon.classList.add('fa', 'fa-link'); // Add Font Awesome icon class for link
+              liTotalLinks.appendChild(totalLinksIcon); // Append the icon to the li element
+              liTotalLinks.innerHTML += `${totalLinks} Cases`;
+              ulElement.appendChild(liTotalLinks);
+
+              // Append the ul element to the case-info div
+              caseInfoDiv.appendChild(ulElement);
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            });
+
+          //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+          // TITLE FIELD
+          var title = data[0].title;
+          var inputField = document.querySelector('#titleInput');
+          inputField.value = title;
+          inputField.placeholder = title;
+          inputField.disabled = false;
+
+          // SEVERITY FIELD
+          var severity = data[0].severity;
+          console.log("severity", severity);
+          var severityList = document.getElementById('severityList');
+          var liElements = severityList.getElementsByTagName('li');
+          for (var i = 0; i < liElements.length; i++) {
+            liElements[i].style.display = 'none';
+          }
+          if (severity >= 1 && severity <= 4) {
+            // Toggle visibility based on severity level
+            var severityClass = 'severity-' + severity;
+            var selectedLi = document.querySelector('.' + severityClass);
+            if (selectedLi) {
+              selectedLi.style.display = 'inline-flex';
+              selectedLi.addEventListener('click', function () {
+                for (var i = 0; i < liElements.length; i++) {
+                  liElements[i].style.display = 'inline-flex';
+                }
+              });
+            }
+          }
+
+          // TLP FIELD
+          var tlp = data[0].tlp;
+          console.log("tlp", tlp);
+          var tlpList = document.getElementById('tlpList');
+          var tlpElements = tlpList.getElementsByTagName('li');
+          for (var i = 0; i < tlpElements.length; i++) {
+            tlpElements[i].style.display = 'none';
+          }
+          if (tlp >= 1 && tlp <= 4) {
+            // Toggle visibility based on tlp level
+            var tlpClass = 'tlp-' + tlp;
+            var selectedLi = document.querySelector('.' + tlpClass);
+            if (selectedLi) {
+              selectedLi.style.display = 'inline-flex';
+              selectedLi.addEventListener('click', function () {
+                for (var i = 0; i < tlpElements.length; i++) {
+                  tlpElements[i].style.display = 'inline-flex';
+                }
+              });
+            }
+          }
+
+          // PAP FIELD
+          var pap = data[0].pap;
+          console.log("pap", pap);
+          var papList = document.getElementById('papList');
+          var papElements = papList.getElementsByTagName('li');
+          for (var i = 0; i < papElements.length; i++) {
+            papElements[i].style.display = 'none';
+          }
+          if (pap >= 1 && pap <= 4) {
+            // Toggle visibility based on pap level
+            var papClass = 'pap-' + pap;
+            var selectedLi = document.querySelector('.' + papClass);
+            if (selectedLi) {
+              selectedLi.style.display = 'inline-flex';
+              selectedLi.addEventListener('click', function () {
+                for (var i = 0; i < papElements.length; i++) {
+                  papElements[i].style.display = 'inline-flex';
+                }
+              });
+            }
+          }
+
+          // ASSIGNEE FIELD
+          var assignee = data[0].assignee;
+          var inputField = document.querySelector('#assigneeInput');
+          inputField.value = assignee;
+          inputField.placeholder = assignee;
+          inputField.disabled = false;
+
+          // START DATE FIELD
+          var createdDate = new Date(data[0].startDate);
+          var formattedDate = `${(createdDate.getMonth() + 1).toString().padStart(2, '0')}.${createdDate.getDate().toString().padStart(2, '0')}.${createdDate.getFullYear().toString().slice(-2)} ${createdDate.getHours().toString().padStart(2, '0')}.${createdDate.getMinutes().toString().padStart(2, '0')}`;
+          console.log("formattedDate", formattedDate)
+          var inputField = document.querySelector('#datetimepicker');
+          inputField.value = createdDate;
+          inputField.placeholder = createdDate;
+          inputField.disabled = false;
+
+          // CLOSE DATE FIELD
+          var endSelectedDate = new Date(data[0].endDate);
+          var formattedDate = `${(endSelectedDate.getMonth() + 1).toString().padStart(2, '0')}.${endSelectedDate.getDate().toString().padStart(2, '0')}.${endSelectedDate.getFullYear().toString().slice(-2)} ${endSelectedDate.getHours().toString().padStart(2, '0')}.${endSelectedDate.getMinutes().toString().padStart(2, '0')}`;
+          console.log("formattedDate", formattedDate)
+          var inputField = document.querySelector('#datetimeClosepicker');
+          inputField.value = endSelectedDate;
+          inputField.placeholder = endSelectedDate;
+          inputField.disabled = false;
+
+          // Tags Field
+
+          // Function to create and append tag elements
+          function createTagElement(tagText) {
+            var tagElement = document.createElement('span');
+            tagElement.classList.add('badge', 'bg-primary', 'me-1');
+
+            var tagTextSpan = document.createElement('span');
+            tagTextSpan.textContent = tagText;
+
+            var closeIcon = document.createElement('i');
+            closeIcon.classList.add('fas', 'fa-times');
+            closeIcon.style.cursor = 'pointer';
+
+            // Add event listener to remove tag when close icon is clicked
+            closeIcon.addEventListener('click', function () {
+                removeTag(tagText, tagElement);
+            });
+
+            tagElement.appendChild(tagTextSpan);
+            tagElement.appendChild(closeIcon);
+
+            tagsContainer.insertBefore(tagElement, inputTag);
+            selectedTags.push(tagText);
+        }
+
+
+        // Function to remove a tag
+        function removeTag(tagText, tagElement) {
+            // Remove tag from selectedTags array
+            var index = selectedTags.indexOf(tagText);
+            if (index !== -1) {
+                selectedTags.splice(index, 1);
+            }
+            // Remove tag element from DOM
+            tagElement.remove();
+        }
+
+          // Function to handle API call for autocomplete
+          function autocomplete(inputText) {
+            var url = 'https://demo2.energysoar.com/base/api/v1/query?name=tags-auto-complete';
+            var headers = {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0'
+            };
+            var query = [{
+              "_name": "tagAutoComplete",
+              "freeTag": inputText,
+              "limit": 20
+            }];
+
+            fetch(url, {
+              method: 'POST',
+              headers: headers,
+              body: JSON.stringify({ query: query })
+            })
+              .then(response => response.json())
+              .then(data => {
+                // Clear previous autocomplete suggestions
+                autocompleteContainer.innerHTML = '';
+                // Display autocomplete suggestions
+                data.forEach(tag => {
+                  var suggestion = document.createElement('div');
+                  suggestion.textContent = tag;
+                  suggestion.classList.add('autocomplete-item');
+                  suggestion.addEventListener('click', function () {
+                    createTagElement(tag);
+                    inputTag.value = ''; // Clear the input field after selecting a tag
+                    autocompleteContainer.innerHTML = ''; // Clear autocomplete suggestions after selecting a tag
+                  });
+                  autocompleteContainer.appendChild(suggestion);
+                });
+              })
+              .catch(error => {
+                console.error('Error fetching autocomplete data:', error);
+              });
+          }
+
+          // Tags Field
+          var tags = data[0].tags;
+          var tagsContainer = document.getElementById('tagsContainer');
+
+          // Clear previous tags
+          tagsContainer.innerHTML = '';
+
+          // Create and append tag elements
+          tags.forEach(tag => {
+            createTagElement(tag);
+          });
+
+          // Create input field for adding new tags
+          var inputTag = document.createElement('input');
+          inputTag.setAttribute('type', 'text');
+          inputTag.classList.add('form-control');
+          tagsContainer.appendChild(inputTag);
+
+          // Create autocomplete container
+          var autocompleteContainer = document.createElement('div');
+          autocompleteContainer.classList.add('autocomplete-container');
+          tagsContainer.appendChild(autocompleteContainer);
+
+          // Event listener to handle input for autocomplete
+          inputTag.addEventListener('input', function () {
+            autocomplete(inputTag.value.trim());
+          });
+
+          document.body.addEventListener('click', function(event) {
+            // Check if the clicked element is outside the autocomplete container
+            if (!autocompleteContainer.contains(event.target) && event.target !== inputTag) {
+                autocompleteContainer.innerHTML = ''; // Hide autocomplete suggestions
+            }
+        });
+
+          /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////          
+          // Loop through each item in the customFields array
+          data[0].customFields.forEach((field, index) => {
+            var labelName = field.name.replace(/-/g, '_');
+            var label = document.createElement('label');
+            label.textContent = labelName;
+
+            var inputContainer = document.createElement('div');
+            inputContainer.className = 'd-flex align-items-center';
+
+            var input;
+            if (field.type === 'boolean') {
+              // For boolean type, create a select dropdown
+              input = document.createElement('select');
+              var optionTrue = document.createElement('option');
+              optionTrue.textContent = 'true';
+              var optionFalse = document.createElement('option');
+              optionFalse.textContent = 'false';
+              input.appendChild(optionTrue);
+              input.appendChild(optionFalse);
+              input.value = field.value.toString();
+            } else {
+              // For other types, create an input field
+              input = document.createElement('input');
+              input.className = 'form-control';
+              input.type = 'number';
+              input.value = field.value;
+            }
+
+            // Set up event listeners for input focus
+            input.addEventListener('focus', function () {
+              this.classList.add('active');
+              inputContainer.classList.add('active');
+              // Show the buttons
+              saveButton.style.display = 'inline-block';
+              cancelButton.style.display = 'inline-block';
+            });
+
+            // Set up event listeners for input blur
+            input.addEventListener('blur', function () {
+              this.classList.remove('active');
+              inputContainer.classList.remove('active');
+            });
+
+            inputContainer.appendChild(input);
+
+            // Add save button with icon
+            var saveButton = document.createElement('button');
+            saveButton.innerHTML = '<i class="fas fa-check"></i>';
+            saveButton.style.display = 'none';
+            saveButton.id = `saveAddition-${index}`; // Assign dynamic ID
+            saveButton.addEventListener('click', function () {
+              var fieldValue;
+              if (field.type === 'boolean') {
+                fieldValue = input.value === 'true'; // Convert string value to boolean
+              } else {
+                fieldValue = parseInt(input.value); // Convert string value to integer
+              }
+              var labelNameWithNegativeSign = labelName.replace(/_/g, "-");
+              var payload = {
+                [`customFields.${labelNameWithNegativeSign}.${field.type}`]: fieldValue
+              };
+
+              console.log("payload", payload)
+
+              // Make API call with the constructed payload
+              fetch('https://demo2.energysoar.com/base/api/case/' + localStorage.getItem("ID"), {
+                method: 'PATCH',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+                },
+                body: JSON.stringify(payload)
+              })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                    // saveButton.style.display = "none";
+                    // cancelButton.style.display = "none"
+                  }
+                })
+                .then(data => {
+                  
+                  // Optionally, handle successful response
+                  saveButton.style.display = "none";
+                  cancelButton.style.display = "none"
+                })
+                .catch(error => {
+                  console.error('There was a problem with the fetch operation:', error);
+                  saveButton.style.display = "none";
+                  cancelButton.style.display = "none"
+                  // Optionally, handle errors
+                });
+            });
+            inputContainer.appendChild(saveButton);
+
+            // Add cancel button with icon
+            var cancelButton = document.createElement('button');
+            cancelButton.innerHTML = '<i class="fas fa-times"></i>';
+            cancelButton.style.display = 'none'; // Hide the button by default
+            cancelButton.id = `cancelAddition-${index}`; // Assign dynamic ID
+            cancelButton.addEventListener('click', function () {
+              // Handle cancel button click event if needed
+            });
+            inputContainer.appendChild(cancelButton);
+
+            cancelButton.addEventListener('click', function () {
+                // Hide saveButton and cancelButton
+                saveButton.style.display = "none";
+                cancelButton.style.display = "none";
+            });
+
+            var trashIcon = document.createElement('i');
+            trashIcon.className = 'bi bi-trash ms-3';
+
+            var labelContainer = document.createElement('div');
+            labelContainer.className = 'col-md-5 bg-label';
+            labelContainer.appendChild(label);
+            labelContainer.appendChild(trashIcon);
+
+            var inputFieldContainer = document.createElement('div');
+            inputFieldContainer.className = 'col-md-7';
+            inputFieldContainer.appendChild(inputContainer);
+
+            var row = document.createElement('div');
+            row.className = 'row mb-3';
+            row.appendChild(labelContainer);
+            row.appendChild(inputFieldContainer);
+
+            // Append the generated row to a container element in your HTML
+            document.getElementById('customFields').appendChild(row);
+          });
+
+
+          /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+
+          // Description Field
+          const descriptionDiv = document.getElementById('description');
+          const editIcon = document.getElementById('editDescription');
+          const descriptionEditor = document.getElementById('quill-container');
+          const cancelButton = document.getElementById('desc-cancel');
+          const submitButton = document.getElementById('desc-save');
+
+          descriptionDiv.textContent = data[0]?.description
+
+          const quillEditor = new Quill('#quill-editor', {
+            theme: 'snow'
+          });
+          function toggleButtons(visible) {
+            if (visible) {
+              cancelButton.style.display = 'inline-block';
+              submitButton.style.display = 'inline-block';
+            } else {
+              cancelButton.style.display = 'none';
+              submitButton.style.display = 'none';
+            }
+          }
+
+          toggleButtons(false);
+          editIcon.addEventListener('click', function () {
+            descriptionDiv.style.display = 'none';
+            descriptionEditor.style.display = 'block';
+            toggleButtons(true);
+            const descriptionContent = descriptionDiv.innerHTML;
+            quillEditor.clipboard.dangerouslyPasteHTML(descriptionContent);
+          });
+
+          cancelButton.addEventListener('click', function () {
+            descriptionDiv.style.display = 'block';
+            descriptionEditor.style.display = 'none';
+            toggleButtons(false);
+          });
+          submitButton.addEventListener('click', function () {
+            console.log("Submit button clicked");
+            const descriptionContent = quillEditor.root.innerText.trim(); // Extract text content
+            console.log("Updated description content:", descriptionContent);
+            descriptionDiv.innerText = descriptionContent; // Update description text
+            descriptionDiv.style.display = 'block';
+            descriptionEditor.style.display = 'none';
+            toggleButtons(false);
+
+            const payload = { description: descriptionContent };
+
+            // Make API call to update description
+            fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+              },
+              body: JSON.stringify(payload)
+            })
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                // Optionally, handle successful response
+                console.log('Description updated successfully');
+              })
+              .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                // Optionally, handle errors
+              });
+          });
+
+          // Summary Field
+          const summaryDiv = document.getElementById('summary');
+          const editSummaryIcon = document.getElementById('editsummary');
+          const summaryEditor = document.getElementById('quillSumm-container');
+          const cancelSummaryButton = document.getElementById('descSumm-cancel');
+          const submitSummaryButton = document.getElementById('descSumm-save');
+
+          if (data[0]?.summary) {
+            summaryDiv.textContent = data[0].summary;
+          } else {
+            summaryDiv.textContent = "Not Specified";
+          }
+
+          const quillSummEditor = new Quill('#quillSumm-editor', {
+            theme: 'snow'
+          });
+          function toggleSummButtons(visible) {
+            if (visible) {
+              cancelSummaryButton.style.display = 'inline-block';
+              submitSummaryButton.style.display = 'inline-block';
+            } else {
+              cancelSummaryButton.style.display = 'none';
+              submitSummaryButton.style.display = 'none';
+            }
+          }
+
+          toggleSummButtons(false);
+          editSummaryIcon.addEventListener('click', function () {
+            summaryDiv.style.display = 'none';
+            summaryEditor.style.display = 'block';
+            toggleSummButtons(true);
+            const summaryContent = summaryDiv.innerHTML;
+            quillSummEditor.clipboard.dangerouslyPasteHTML(summaryContent);
+          });
+
+          cancelSummaryButton.addEventListener('click', function () {
+            summaryDiv.style.display = 'block';
+            summaryEditor.style.display = 'none';
+            toggleSummButtons(false);
+          });
+
+          submitSummaryButton.addEventListener('click', function () {
+            console.log("Submit button clicked");
+            const descriptionSummContent = quillSummEditor.root.innerText.trim(); // Extract text content
+            console.log("Updated description content:", descriptionSummContent);
+            summaryDiv.innerText = descriptionSummContent; // Update description text
+            summaryDiv.style.display = 'block';
+            summaryEditor.style.display = 'none';
+            toggleSummButtons(false);
+
+            const payload = { summary: descriptionSummContent };
+
+            // Make API call to update description
+            fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+              },
+              body: JSON.stringify(payload)
+            })
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                // Optionally, handle successful response
+                console.log('Description updated successfully');
+              })
+              .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                // Optionally, handle errors
+              });
+          });
+
+
+        })
+
+        .catch(error => {
+          // Handle errors that occur during the fetch request
+          console.error('Fetch error:', error);
+        });
+    }
+  }
+
+  getDetails()
+</script>
+
+<!-- TASKS -->
+<script>
+
+  // Define a function to execute the script
+  function fetchDataAndUpdateTable(filterValue, toValue) {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0'
+    };
+
+    var assigneeInputValue = document.getElementById("assignee-input-value").value;
+    var startDateValue = document.getElementById('startDate-input').value;
+    var endDateValue = document.getElementById('endDate-value-input').value;
+    var descInputVal = document.getElementById("description-input-value").value;
+    var clearAllFilter = document.getElementById("clearFilters")
+    
+
+    var startDateMilliseconds = Date.parse(startDateValue);
+    var endDateMilliseconds = Date.parse(endDateValue);
+
+    console.log("startDateValue", startDateValue)
+    console.log("endDateValue", endDateValue)
+
+    // Define the requestObject with the default payload
+    var requestObject = {
+      "query": [
+        {
+          "_name": "getCase",
+          "idOrName": localStorage.getItem("ID")
+        },
+        {
+          "_name": "tasks"
+        },
+        {
+          "_name": "filter",
+          "_ne": {
+            "_field": "status",
+            "_value": "Cancel"
+          }
+        },
+        {
+          "_name": "sort",
+          "_fields": [
+            {
+              "flag": "desc"
+            },
+            {
+              "order": "asc"
+            },
+            {
+              "startDate": "asc"
+            },
+            {
+              "title": "asc"
+            }
+          ]
+        },
+        {
+          "_name": "page",
+          "from": 0,
+          "to": toValue || 15, // Set the default 'to' value to 15 or use the provided 'toValue'
+          "extraData": [
+            "shareCount",
+            "actionRequired"
+          ]
+        }
+      ]
+    };
+
+    if(clearAllFilter) {
+      requestObject = {
+      "query": [
+        {
+          "_name": "getCase",
+          "idOrName": localStorage.getItem("ID")
+        },
+        {
+          "_name": "tasks"
+        },
+        {
+          "_name": "filter",
+          "_ne": {
+            "_field": "status",
+            "_value": "Cancel"
+          }
+        },
+        {
+          "_name": "sort",
+          "_fields": [
+            {
+              "flag": "desc"
+            },
+            {
+              "order": "asc"
+            },
+            {
+              "startDate": "asc"
+            },
+            {
+              "title": "asc"
+            }
+          ]
+        },
+        {
+          "_name": "page",
+          "from": 0,
+          "to": toValue || 15, // Set the default 'to' value to 15 or use the provided 'toValue'
+          "extraData": [
+            "shareCount",
+            "actionRequired"
+          ]
+        }
+      ]
+    };
+    }
+
+    // If filterValue is provided, update the payload with the selected filter
+    if (filterValue) {
+      requestObject = {
+        "query": [
+          {
+            "_name": "getCase",
+            "idOrName": localStorage.getItem("ID")
+          },
+          {
+            "_name": "tasks"
+          },
+          {
+            "_name": "filter",
+            "_and": [
+              {
+                "_ne": {
+                  "_field": "status",
+                  "_value": "Cancel"
+                }
+              },
+              {
+                "_field": "status",
+                "_value": filterValue
+              }
+            ]
+          },
+          {
+            "_name": "sort",
+            "_fields": [
+              {
+                "flag": "desc"
+              },
+              {
+                "order": "asc"
+              },
+              {
+                "startDate": "asc"
+              },
+              {
+                "title": "asc"
+              }
+            ]
+          },
+          {
+            "_name": "page",
+            "from": 0,
+            "to": toValue || 15, // Set the default 'to' value to 15 or use the provided 'toValue'
+            "extraData": [
+              "shareCount",
+              "actionRequired"
+            ]
+          }
+        ]
+      }
+    }
+
+    if(assigneeInputValue) {
+      requestObject = {
+        "query": [
+          {
+            "_name": "getCase",
+            "idOrName": localStorage.getItem("ID")
+          },
+          {
+            "_name": "tasks"
+          },
+          {
+            "_name": "filter",
+            "_ne": {
+              "_field": "status",
+              "_value": "Cancel"
+            }
+          },
+          {
+            "_name": "sort",
+            "_fields": [
+              {
+                "flag": "desc"
+              },
+              {
+                "order": "asc"
+              },
+              {
+                "startDate": "asc"
+              },
+              {
+                "title": "asc"
+              }
+            ]
+          },
+          {
+            "_name": "page",
+            "from": 0,
+            "to": toValue || 15, // Set the default 'to' value to 15 or use the provided 'toValue'
+            "extraData": [
+              "shareCount",
+              "actionRequired"
+            ]
+          }
+        ]
+      }
+    }
+
+    if (startDateValue) {
+      requestObject = {
+        "query": [
+          {
+            "_name": "getCase",
+            "idOrName": localStorage.getItem("ID")
+          },
+          {
+            "_name": "tasks"
+          },
+          {
+            "_name": "filter",
+            "_and": [
+              {
+                "_ne": {
+                  "_field": "status",
+                  "_value": "Cancel"
+                }
+              },
+              {
+                "_gt": {
+                  "endDate": startDateMilliseconds,
+                }
+              }
+            ]
+          },
+          {
+            "_name": "sort",
+            "_fields": [
+              {
+                "flag": "desc"
+              },
+              {
+                "order": "asc"
+              },
+              {
+                "startDate": "asc"
+              },
+              {
+                "title": "asc"
+              }
+            ]
+          },
+          {
+            "_name": "page",
+            "from": 0,
+            "to": toValue || 15, // Set the default 'to' value to 15 or use the provided 'toValue'
+            "extraData": [
+              "shareCount",
+              "actionRequired"
+            ]
+          }
+        ]
+      }
+    }
+
+    if (endDateValue) {
+      requestObject = {
+        "query": [
+          {
+            "_name": "getCase",
+            "idOrName": localStorage.getItem("ID")
+          },
+          {
+            "_name": "tasks"
+          },
+          {
+            "_name": "filter",
+            "_and": [
+              {
+                "_ne": {
+                  "_field": "status",
+                  "_value": "Cancel"
+                }
+              },
+              {
+                "_lt": {
+                  "endDate": endDateMilliseconds,
+                }
+              }
+            ]
+          },
+          {
+            "_name": "sort",
+            "_fields": [
+              {
+                "flag": "desc"
+              },
+              {
+                "order": "asc"
+              },
+              {
+                "startDate": "asc"
+              },
+              {
+                "title": "asc"
+              }
+            ]
+          },
+          {
+            "_name": "page",
+            "from": 0,
+            "to": toValue || 15, // Set the default 'to' value to 15 or use the provided 'toValue'
+            "extraData": [
+              "shareCount",
+              "actionRequired"
+            ]
+          }
+        ]
+      }
+    }
+    
+    if (startDateValue && endDateValue) {
+      requestObject = {
+        "query": [
+          {
+            "_name": "getCase",
+            "idOrName": localStorage.getItem("ID")
+          },
+          {
+            "_name": "tasks"
+          },
+          {
+            "_name": "filter",
+            "_and": [
+              {
+                "_ne": {
+                  "_field": "status",
+                  "_value": "Cancel"
+                }
+              },
+              {
+                "_between": {
+                  "_field": "endDate",
+                  "_from": startDateMilliseconds,
+                  "_to": endDateMilliseconds,
+                }
+              }
+            ]
+          },
+          {
+            "_name": "sort",
+            "_fields": [
+              {
+                "flag": "desc"
+              },
+              {
+                "order": "asc"
+              },
+              {
+                "startDate": "asc"
+              },
+              {
+                "title": "asc"
+              }
+            ]
+          },
+          {
+            "_name": "page",
+            "from": 0,
+            "to": toValue || 15, // Set the default 'to' value to 15 or use the provided 'toValue'
+            "extraData": [
+              "shareCount",
+              "actionRequired"
+            ]
+          }
+        ]
+      }
+    }
+
+    if(descInputVal) {
+      requestObject = {
+        "query": [
+          {
+            "_name": "getCase",
+            "idOrName": localStorage.getItem("ID")
+          },
+          {
+            "_name": "tasks"
+          },
+          {
+            "_name": "filter",
+            "_and": [
+              {
+                "_ne": {
+                  "_field": "status",
+                  "_value": "Cancel"
+                }
+              },
+              {
+                "_like": {
+                  "_field":"description",
+                  "_value": descInputVal,
+                }
+              }
+            ]
+          },
+          {
+            "_name": "sort",
+            "_fields": [
+              {
+                "flag": "desc"
+              },
+              {
+                "order": "asc"
+              },
+              {
+                "startDate": "asc"
+              },
+              {
+                "title": "asc"
+              }
+            ]
+          },
+          {
+            "_name": "page",
+            "from": 0,
+            "to": toValue || 15,
+            "extraData": [
+              "shareCount",
+              "actionRequired"
+            ]
+          }
+        ]
+      }
+    }
+    
+    fetch('https://demo2.energysoar.com/base/api/v1/query?name=case-tasks', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(requestObject)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Tasks Response:', data);
+        replaceHTMLWithTables(data);
+
+        console.log("datadata", data.length);
+        const taskLengthDiv = document.getElementById("task-length");
+        if (toValue === undefined) {
+          // Check if data.length is greater than 15
+          if (data.length > 15) {
+            taskLengthDiv.innerHTML = "Fetching Data(15 of " + data.length + ")";
+          } else {
+            taskLengthDiv.innerHTML = "Fetching Data(" + data.length + " of " + data.length + ")";
+          }
+        }
+
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      });
+  }
+
+  // Call the function on page load to execute the default behavior
+  fetchDataAndUpdateTable();
+
+  $(document).ready(function () {
+    // Attach change event listener to the dropdown menu
+    $('#taskDropdown').on('change', function () {
+      // Get the selected filter value
+      var selectedFilter = $(this).val();
+      console.log('Selected Filter:', selectedFilter);
+      // Call the function with the selected filter value to update the payload
+      fetchDataAndUpdateTable(selectedFilter);
+      // Add the selected filter below the dropdown menu
+      addSelectedFilter(selectedFilter);
+    });
+
+    // Add event listener to the close icon of selected filters
+    $(document).on('click', '.close-filter', function () {
+      // Get the filter value to be removed
+      var filterValueToRemove = $(this).prev().text();
+      console.log('Removing Filter:', filterValueToRemove);
+      // Remove the filter from the dropdown menu
+      $('#taskDropdown option[value="' + filterValueToRemove + '"]').prop('selected', false);
+      // Set the default option as selected
+      $('#taskDropdown option.default').prop('selected', true);
+      // Call the function to update the table without the removed filter
+      fetchDataAndUpdateTable();
+      // Remove the selected filter from the display
+      $(this).parent().remove();
+    });
+
+    // Attach change event listener to the pagination dropdown menu
+    $('#paginate').on('change', function () {
+      // Get the selected value
+      var selectedValue = parseInt($(this).val());
+      console.log('Selected Value:', selectedValue);
+      // Call the function with the selected value to update the 'to' key
+      fetchDataAndUpdateTable(null, selectedValue);
+    });
+
+    $('#searchFilter').on('click', function(){
+        // Call fetchDataAndUpdateTable function without any parameters
+        fetchDataAndUpdateTable();
+    });
+  });
+
+  // Function to add selected filter below the dropdown menu
+  function addSelectedFilter(filterValue) {
+    // Check if the filter already exists in the display
+    if ($('#selectedFilters').find('.selected-filter').text().includes(filterValue)) {
+      return;
+    }
+    // Add the filter to the display
+    $('#selectedFilters').append('<div class="selected-filter">' + filterValue + '<span class="close-filter">&times;</span></div>');
+  }
+
+  function replaceHTMLWithTables(data) {
+    console.log("DTATAAA", data.length)
+    const containerDiv = document.createElement('div');
+    containerDiv.className = 'table-responsive case-list';
+
+    data.forEach(taskData => {
+      const table = document.createElement('table');
+      table.className = 'table table-striped table-hover';
+      const tableBody = document.createElement('tbody');
+      const groupInfo = document.createElement('p');
+
+
+      containerDiv.appendChild(groupInfo);
+
+      const tableHeader = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+      const headerCheckbox = document.createElement('th');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.addEventListener('click', () => {
+        const tableRows = table.querySelectorAll('tbody tr');
+        tableRows.forEach(row => {
+          const rowCheckbox = row.querySelector('input[type="checkbox"]');
+          rowCheckbox.checked = checkbox.checked;
+        });
+      });
+      headerCheckbox.appendChild(checkbox);
+      headerRow.appendChild(headerCheckbox);
+      const headerColumns = ['Group', 'Task', 'Date', 'Assignee', 'Actions'];
+      headerColumns.forEach(column => {
+        const headerCell = document.createElement('th');
+        headerCell.textContent = column;
+        headerRow.appendChild(headerCell);
+      });
+      tableHeader.appendChild(headerRow);
+      table.appendChild(tableHeader);
+      table.appendChild(tableBody);
+
+      containerDiv.appendChild(table);
+
+      const row = document.createElement('tr');
+      const firstCell = document.createElement('td');
+      const rowCheckbox = document.createElement('input');
+      rowCheckbox.type = 'checkbox';
+      firstCell.appendChild(rowCheckbox);
+      row.appendChild(firstCell);
+      const columns = ['group', 'title', 'startDate', 'assignee', 'description'];
+      columns.forEach((key, index) => {
+        const cell = document.createElement('td');
+        if (index === 1) { // Second cell (title cell)
+          const titleSpan = document.createElement('span');
+          titleSpan.textContent = taskData[key]; // Set the title text content
+          cell.appendChild(titleSpan);
+
+          // Check if description is available
+          if (taskData.description) {
+            const dropdownIcon = document.createElement('i');
+            dropdownIcon.className = 'fas fa-caret-down'; // Font Awesome dropdown icon
+            dropdownIcon.style.cursor = 'pointer'; // Set cursor style to pointer
+            dropdownIcon.addEventListener('click', () => { // Event listener for dropdown icon
+              // Toggle the display of description div
+              descriptionDiv.style.display = descriptionDiv.style.display === 'block' ? 'none' : 'block';
+            });
+            cell.appendChild(dropdownIcon);
+
+            // Create description div
+            const descriptionDiv = document.createElement('div');
+            descriptionDiv.className = 'description-div';
+            const descriptionContent = taskData.description.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+            descriptionDiv.innerHTML = descriptionContent;
+            descriptionDiv.style.display = 'none'; // Hide description div initially
+            cell.appendChild(descriptionDiv);
+          }
+        } else if (index === 2) { // Third cell (startDate cell)
+          const startDate = new Date(taskData[key]);
+          if (!isNaN(startDate.getTime())) { // Check if startDate is not NaN
+            const formattedDate = `${(startDate.getMonth() + 1).toString().padStart(2, '0')}/${startDate.getDate().toString().padStart(2, '0')}/${startDate.getFullYear().toString().slice(2)} ${startDate.getHours().toString().padStart(2, '0')}:${startDate.getMinutes().toString().padStart(2, '0')}`;
+            cell.textContent = formattedDate;
+          } else {
+            cell.textContent = ""; // Set empty string if startDate is NaN
+          }
+        } else if (index === 3) { // Fourth cell (assignee cell)
+          cell.textContent = taskData[key] || 'Not Specified'; // Set to "Not Specified" if assignee is not available
+        } else if (index === 4) { // Fifth cell (description cell)
+          cell.style.display = 'none'; // Hide the description cell
+        } else {
+          cell.textContent = taskData[key] || '';
+        }
+        row.appendChild(cell);
+      });
+      const actionsCell = document.createElement('td');
+      // Add icons as buttons
+      const deleteButton = document.createElement('button');
+      deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+      actionsCell.appendChild(deleteButton);
+
+      // Add event listener to the delete button
+      // Event listener for the delete button
+      deleteButton.addEventListener('click', function (eventObject) {
+        // Get the _id of the object associated with the row
+        var taskId = taskData._id;
+        console.log('Deleting Task with ID:', taskId);
+
+        // Show the Bootstrap modal
+        var modal = document.getElementById('deleteModal');
+        var modalInstance = new bootstrap.Modal(modal);
+        modalInstance.show();
+
+        // Add event listener to the delete button inside the modal
+        var modalDeleteButton = document.getElementById('modalDeleteButton');
+        modalDeleteButton.addEventListener('click', function (eventObject) {
+          // Call the API to delete the task using taskId
+          deleteTask(taskId);
+        });
+      });
+
+      // Function to delete the task using taskId
+      function deleteTask(taskId) {
+        // Make the API call to delete the task
+        fetch('https://demo2.energysoar.com/base/api/case/task/' + taskId, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0'
+          }
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            console.log('Task deleted successfully');
+            // Close the modal after successful deletion
+            var modal = document.getElementById('deleteModal');
+            var modalInstance = bootstrap.Modal.getInstance(modal);
+            modalInstance.hide();
+          })
+          .catch(error => {
+            console.error('Error deleting task:', error);
+          });
+      }
+
+      // Get a reference to the close button inside the modal
+      var closeButton = document.getElementById('closeButton');
+      var closeIcon = document.getElementById('closeIcon');
+
+      // Add event listener to the close button
+      closeButton.addEventListener('click', function (eventObject) {
+        // Get a reference to the modal element
+        var modal = document.getElementById('deleteModal');
+
+        // Hide the modal using Bootstrap's modal method
+        var modalInstance = bootstrap.Modal.getInstance(modal);
+        modalInstance.hide();
+
+        // Remove the modal backdrop
+        var modalBackdrop = document.querySelector('.modal-backdrop');
+        if (modalBackdrop) {
+          modalBackdrop.remove();
+        }
+      });
+
+      // Add event listener to the close button
+      closeIcon.addEventListener('click', function (eventObject) {
+        // Get a reference to the modal element
+        var modal = document.getElementById('deleteModal');
+
+        // Hide the modal using Bootstrap's modal method
+        var modalInstance = bootstrap.Modal.getInstance(modal);
+        modalInstance.hide();
+
+        // Remove the modal backdrop
+        var modalBackdrop = document.querySelector('.modal-backdrop');
+        if (modalBackdrop) {
+          modalBackdrop.remove();
+        }
+      });
+
+      const playButton = document.createElement('button');
+      playButton.innerHTML = '<i class="fas fa-play"></i>';
+      actionsCell.appendChild(playButton);
+
+      const cogButton = document.createElement('button');
+      cogButton.innerHTML = '<i class="fas fa-cog"></i>';
+      actionsCell.appendChild(cogButton);
+
+      row.appendChild(actionsCell);
+      tableBody.appendChild(row);
+
+      groupInfo.textContent = `${taskData.group} (${tableBody.querySelectorAll('tr').length} task(s))`;
+    });
+    const existingHTMLDiv = document.querySelector('.table-responsive.case-list');
+    existingHTMLDiv.replaceWith(containerDiv);
+  }
+</script>
+
+
+<!-- OBSERVABLES -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var caseTableBody = document.getElementById('observeTableBody');
+    var paginateSelect = document.getElementById('observePaginate'); // Select element for pagination
+
+    var payload = {
+      "query": [
+        {
+          "_name": "getCase",
+          "idOrName": localStorage.getItem("ID")
+        },
+        {
+          "_name": "observables"
+        },
+        {
+          "_name": "sort",
+          "_fields": [
+            {
+              "startDate": "desc"
+            }
+          ]
+        },
+        {
+          "_name": "page",
+          "from": 0,
+          "to": 15, // Default value set to 15
+          "extraData": [
+            "seen",
+            "permissions",
+            "shareCount"
+          ]
+        }
+      ]
+    };
+
+    fetch('https://demo2.energysoar.com/base/api/v1/query?name=observables', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+      },
+      mode: 'cors',
+      body: JSON.stringify(payload)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(data => {
+        console.log("Observable Data", data);
+        // Populate table rows dynamically
+        populateTableRows(data);
+        updateObservablesLengthDiv(data.length);
+      })
+      .catch(error => console.error('Error:', error));
+
+    function populateTableRows(data) {
+      // Clear existing table rows
+      caseTableBody.innerHTML = '';
+
+      // Loop through each item in the data array
+      data.forEach(item => {
+
+        function formatTimestamp(timestamp) {
+          var date = new Date(timestamp);
+          var day = ('0' + date.getDate()).slice(-2); // Get day of the month and pad with leading zero if necessary
+          var month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-indexed, so we add 1 and pad with leading zero if necessary
+          var year = date.getFullYear().toString().slice(-2); // Get last two digits of the year
+          var hours = ('0' + date.getHours()).slice(-2); // Get hours and pad with leading zero if necessary
+          var minutes = ('0' + date.getMinutes()).slice(-2); // Get minutes and pad with leading zero if necessary
+          return day + '.' + month + '.' + year + ' ' + hours + '.' + minutes;
+        }
+        // Create a new table row
+        var row = document.createElement('tr');
+
+        // Checkbox column
+        var checkboxCell = document.createElement('td');
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkboxCell.appendChild(checkbox);
+        row.appendChild(checkboxCell);
+
+        // Flags column (icon placeholder)
+        var flagsCell = document.createElement('td');
+
+        // Create a parent div for the icons and tlp class
+        var iconContainer = document.createElement('div');
+        iconContainer.className = 'icons-list';
+
+        // Create a div with the tlp class
+        var tlpDiv = document.createElement('div');
+        tlpDiv.className = 'tlp';
+
+        // Determine the tooltip text based on the item.tlp value
+        var tooltipText = '';
+        switch (item.tlp) {
+          case 1:
+            tooltipText = 'TLP: WHITE';
+            break;
+          case 2:
+            tooltipText = 'TLP: AMBER';
+            break;
+          case 3:
+            tooltipText = 'TLP: GREEN';
+            break;
+          case 4:
+            tooltipText = 'TLP: RED';
+            break;
+          default:
+            tooltipText = 'Unknown TLP';
+        }
+
+        // Set the tooltip text as the title attribute of the tlpDiv
+        tlpDiv.title = tooltipText;
+
+        // Append the tlp div to the icon container
+        iconContainer.appendChild(tlpDiv);
+
+        // Create and append the icons to the icon container
+        var starIcon = document.createElement('i');
+        starIcon.className = 'fas fa-star';
+        iconContainer.appendChild(starIcon);
+
+        var toggleIcon = document.createElement('i');
+        toggleIcon.className = 'fas fa-toggle-on';
+        iconContainer.appendChild(toggleIcon);
+
+        var eyeIcon = document.createElement('i');
+        eyeIcon.className = 'fas fa-eye';
+        iconContainer.appendChild(eyeIcon);
+
+        var unlinkIcon = document.createElement('i');
+        unlinkIcon.className = 'fas fa-unlink';
+        iconContainer.appendChild(unlinkIcon);
+
+        // Append the icon container to the flags cell
+        flagsCell.appendChild(iconContainer);
+        row.appendChild(flagsCell);
+
+
+        // Type column
+        var typeCell = document.createElement('td');
+        typeCell.textContent = item.dataType; // Assuming dataType is available in the data
+        row.appendChild(typeCell);
+
+        // Value/Filename column
+        var valueCell = document.createElement('td');
+        valueCell.textContent = item.data; // Assuming data is available in the data
+        row.appendChild(valueCell);
+
+        // Create a div for tags
+        var tagsDiv = document.createElement('div');
+        tagsDiv.classList.add("tags-list")
+
+        // Create a span for the tags icon and append it to the tags div
+        var tagsIconSpan = document.createElement('span');
+        tagsIconSpan.innerHTML = '<i class="fa fa-tags"></i> ';
+        tagsDiv.appendChild(tagsIconSpan);
+
+        // Check if tags array is empty
+        if (item.tags && item.tags.length > 0) {
+          // Iterate over the tags array and create spans for each tag
+          item.tags.forEach(function (tag) {
+            var tagSpan = document.createElement('span');
+            tagSpan.textContent = tag;
+            tagsDiv.appendChild(tagSpan);
+          });
+        } else {
+          // If tags array is empty, create a span with "None" and append it to the tags div
+          var noneTagsSpan = document.createElement('span');
+          noneTagsSpan.textContent = 'None';
+          tagsDiv.appendChild(noneTagsSpan);
+        }
+
+
+        // Append the tags div to the numberTitleCell
+        valueCell.appendChild(tagsDiv);
+
+        // Create a div for custom fields
+        var customFieldsDiv = document.createElement('div');
+        customFieldsDiv.classList.add('custom-list');
+
+        var icon = document.createElement('i');
+        icon.classList.add('fa', 'fa-code');
+        customFieldsDiv.appendChild(icon);
+
+        // Define the array of report keys to iterate over
+        var reportKeys = [
+          'Cyberprotect_ThreatScore_3_0',
+          'EnrichmentEngine_1_0',
+          'VirusTotal_GetReport_3_1',
+          'VirusTotal_Scan_3_1',
+          'DomainMailSPFDMARC_Analyzer_1_1',
+          'EmailRep_1_0',
+          'EmlParser_2_1'
+        ];
+
+        // Iterate over each report key
+        reportKeys.forEach(reportKey => {
+          // Check if the reports array exists and is not empty
+          if (item.reports?.[reportKey]?.taxonomies && item.reports?.[reportKey]?.taxonomies.length > 0) {
+            // Iterate over the taxonomies array
+            item.reports[reportKey].taxonomies.forEach(function (field) {
+              var paragraph = document.createElement('p');
+
+              var nameSpan = document.createElement('span');
+              nameSpan.textContent = field.namespace + ":" + field.predicate + "=";
+
+              var valueSpan = document.createElement('span');
+              valueSpan.textContent = field.value;
+              paragraph.appendChild(nameSpan);
+              paragraph.appendChild(valueSpan);
+
+              // Append the paragraph to the customFieldsDiv
+              customFieldsDiv.appendChild(paragraph);
+            });
+          } else {
+            // If the reports array is empty, ignore it for this key
+            return;
+          }
+        });
+
+        // Append the customFieldsDiv to the valueCell
+        valueCell.appendChild(customFieldsDiv);
+
+
+
+        // Start Date, Created At, and Updated At column
+        var datesCell = document.createElement('td');
+
+        // Create divs for each date if they exist
+        if (item.startDate) {
+          var startDateDiv = document.createElement('div');
+          startDateDiv.textContent = 'S. ' + formatTimestamp(item.startDate);
+          datesCell.appendChild(startDateDiv);
+        }
+
+        if (item._createdAt) {
+          var createdAtDiv = document.createElement('div');
+          createdAtDiv.textContent = 'C. ' + formatTimestamp(item._createdAt);
+          datesCell.appendChild(createdAtDiv);
+        }
+
+        if (item._updatedAt) {
+          var updatedAtDiv = document.createElement('div');
+          updatedAtDiv.textContent = 'U. ' + formatTimestamp(item._updatedAt);
+          datesCell.appendChild(updatedAtDiv);
+        }
+
+        row.appendChild(datesCell);
+
+        // Actions column (icon placeholder)
+        var actionsCell = document.createElement('td');
+        var actionsIcon = document.createElement('i');
+        actionsIcon.className = 'fas fa-cogs'; // Placeholder icon class
+        actionsCell.appendChild(actionsIcon);
+        row.appendChild(actionsCell);
+
+        // Append the row to the table body
+        caseTableBody.appendChild(row);
+      });
+    }
+
+    // Attach change event listener to the pagination dropdown menu
+    paginateSelect.addEventListener('change', function () {
+      // Get the selected value
+      var selectedValue = parseInt(this.value);
+      console.log('Selected Value:', selectedValue);
+      // Update the 'to' key in the payload object with the selected value
+      payload.query[3].to = selectedValue;
+      // Fetch data with updated payload
+      fetchDataWithUpdatedPayload();
+    });
+
+    function fetchDataWithUpdatedPayload() {
+      fetch('https://demo2.energysoar.com/base/api/v1/query?name=observables', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+        },
+        mode: 'cors',
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+          console.log("Observable Data", data);
+          // Populate table rows dynamically
+          populateTableRows(data);
+          updateObservablesLengthDiv(data.length); // Update the observable length div
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function updateObservablesLengthDiv(length) {
+      const observeLengthDiv = document.getElementById("observe-length");
+      if (length > 15) {
+        observeLengthDiv.innerHTML = "Fetching Data(15 of " + length + ")";
+      } else {
+        observeLengthDiv.innerHTML = "Fetching Data(" + length + " of " + length + ")";
+      }
+    }
+  });
+
+</script>
+
+<!-- TTPs -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var caseTableBody = document.getElementById('ttpTableBody');
+    var paginateSelect = document.getElementById('ttpPaginate');
+
+    var payload = {
+      "query": [
+        {
+          "_name": "getCase",
+          "idOrName": "~812175504"
+        },
+        {
+          "_name": "procedures"
+        },
+        {
+          "_name": "sort",
+          "_fields": [
+            {
+              "occurDate": "desc"
+            }
+          ]
+        },
+        {
+          "_name": "page",
+          "from": 0,
+          "to": 15,
+          "extraData": [
+            "pattern",
+            "patternParent"
+          ]
+        }
+      ]
+    };
+
+    fetch('https://demo2.energysoar.com/base/api/v1/query?name=case-procedures', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+      },
+      mode: 'cors',
+      body: JSON.stringify(payload)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(data => {
+        console.log("TTPs Data", data);
+        if (data.length === 0) {
+          var noDataDiv = document.createElement('div');
+          noDataDiv.classList.add('no-data');
+          var noDataImg = document.createElement('img');
+          noDataImg.src = '../assets/img/no-data.jpg';
+          noDataImg.alt = 'No records image'; 
+          noDataImg.classList = 'no-data';
+          noDataDiv.appendChild(noDataImg);
+          var ttpTabPane = document.getElementById('ttp');
+          ttpTabPane.appendChild(noDataDiv);
+        }
+        else {
+          populateTtpTableRows(data);
+          updateTtpLengthDiv(data.length);
+        }
+
+        function populateTtpTableRows(data) {
+          caseTableBody.innerHTML = '';
+
+          data.forEach(item => {
+            function formatTimestamp(timestamp) {
+              var date = new Date(timestamp);
+              var day = ('0' + date.getDate()).slice(-2);
+              var month = ('0' + (date.getMonth() + 1)).slice(-2);
+              var year = date.getFullYear().toString().slice(-2);
+              var hours = ('0' + date.getHours()).slice(-2);
+              var minutes = ('0' + date.getMinutes()).slice(-2);
+              return day + '.' + month + '.' + year + ' ' + hours + '.' + minutes;
+            }
+            // Create a new table row
+            var row = document.createElement('tr');
+
+            // Checkbox column
+            var checkboxCell = document.createElement('td');
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkboxCell.appendChild(checkbox);
+            row.appendChild(checkboxCell);
+
+            // Flags column (icon placeholder)
+            var flagsCell = document.createElement('td');
+
+            // Create a parent div for the icons and tlp class
+            var iconContainer = document.createElement('div');
+            iconContainer.className = 'icons-list';
+
+            // Create a div with the tlp class
+            var tlpDiv = document.createElement('div');
+            tlpDiv.className = 'tlp';
+
+            // Determine the tooltip text based on the item.tlp value
+            var tooltipText = '';
+            switch (item.tlp) {
+              case 1:
+                tooltipText = 'TLP: WHITE';
+                break;
+              case 2:
+                tooltipText = 'TLP: AMBER';
+                break;
+              case 3:
+                tooltipText = 'TLP: GREEN';
+                break;
+              case 4:
+                tooltipText = 'TLP: RED';
+                break;
+              default:
+                tooltipText = 'Unknown TLP';
+            }
+
+            // Set the tooltip text as the title attribute of the tlpDiv
+            tlpDiv.title = tooltipText;
+
+            // Append the tlp div to the icon container
+            iconContainer.appendChild(tlpDiv);
+
+            // Create and append the icons to the icon container
+            var starIcon = document.createElement('i');
+            starIcon.className = 'fas fa-star';
+            iconContainer.appendChild(starIcon);
+
+            var toggleIcon = document.createElement('i');
+            toggleIcon.className = 'fas fa-toggle-on';
+            iconContainer.appendChild(toggleIcon);
+
+            var eyeIcon = document.createElement('i');
+            eyeIcon.className = 'fas fa-eye';
+            iconContainer.appendChild(eyeIcon);
+
+            var unlinkIcon = document.createElement('i');
+            unlinkIcon.className = 'fas fa-unlink';
+            iconContainer.appendChild(unlinkIcon);
+
+            // Append the icon container to the flags cell
+            flagsCell.appendChild(iconContainer);
+            row.appendChild(flagsCell);
+
+
+            // Type column
+            var typeCell = document.createElement('td');
+            typeCell.textContent = item.dataType;
+            row.appendChild(typeCell);
+
+            // Value/Filename column
+            var valueCell = document.createElement('td');
+            valueCell.textContent = item.data;
+            row.appendChild(valueCell);
+
+            // Create a div for tags
+            var tagsDiv = document.createElement('div');
+            tagsDiv.classList.add("tags-list")
+
+            // Create a span for the tags icon and append it to the tags div
+            var tagsIconSpan = document.createElement('span');
+            tagsIconSpan.innerHTML = '<i class="fa fa-tags"></i> ';
+            tagsDiv.appendChild(tagsIconSpan);
+
+            // Check if tags array is empty
+            if (item.tags && item.tags.length > 0) {
+              item.tags.forEach(function (tag) {
+                var tagSpan = document.createElement('span');
+                tagSpan.textContent = tag;
+                tagsDiv.appendChild(tagSpan);
+              });
+            } else {
+              var noneTagsSpan = document.createElement('span');
+              noneTagsSpan.textContent = 'None';
+              tagsDiv.appendChild(noneTagsSpan);
+            }
+
+            // Append the tags div to the numberTitleCell
+            valueCell.appendChild(tagsDiv);
+
+            // Create a div for custom fields
+            var customFieldsDiv = document.createElement('div');
+            customFieldsDiv.classList.add('custom-list');
+
+            var icon = document.createElement('i');
+            icon.classList.add('fa', 'fa-code');
+            customFieldsDiv.appendChild(icon);
+
+            // Define the array of report keys to iterate over
+            var reportKeys = [
+              'Cyberprotect_ThreatScore_3_0',
+              'EnrichmentEngine_1_0',
+              'VirusTotal_GetReport_3_1',
+              'VirusTotal_Scan_3_1',
+              'DomainMailSPFDMARC_Analyzer_1_1',
+              'EmailRep_1_0',
+              'EmlParser_2_1'
+            ];
+
+            // Iterate over each report key
+            reportKeys.forEach(reportKey => {
+              if (item.reports?.[reportKey]?.taxonomies && item.reports?.[reportKey]?.taxonomies.length > 0) {
+                item.reports[reportKey].taxonomies.forEach(function (field) {
+                  var paragraph = document.createElement('p');
+
+                  var nameSpan = document.createElement('span');
+                  nameSpan.textContent = field.namespace + ":" + field.predicate + "=";
+
+                  var valueSpan = document.createElement('span');
+                  valueSpan.textContent = field.value;
+                  paragraph.appendChild(nameSpan);
+                  paragraph.appendChild(valueSpan);
+
+                  // Append the paragraph to the customFieldsDiv
+                  customFieldsDiv.appendChild(paragraph);
+                });
+              } else {
+                return;
+              }
+            });
+
+            // Append the customFieldsDiv to the valueCell
+            valueCell.appendChild(customFieldsDiv);
+
+            // Start Date, Created At, and Updated At column
+            var datesCell = document.createElement('td');
+
+            // Create divs for each date if they exist
+            if (item.startDate) {
+              var startDateDiv = document.createElement('div');
+              startDateDiv.textContent = 'S. ' + formatTimestamp(item.startDate);
+              datesCell.appendChild(startDateDiv);
+            }
+
+            if (item._createdAt) {
+              var createdAtDiv = document.createElement('div');
+              createdAtDiv.textContent = 'C. ' + formatTimestamp(item._createdAt);
+              datesCell.appendChild(createdAtDiv);
+            }
+
+            if (item._updatedAt) {
+              var updatedAtDiv = document.createElement('div');
+              updatedAtDiv.textContent = 'U. ' + formatTimestamp(item._updatedAt);
+              datesCell.appendChild(updatedAtDiv);
+            }
+
+            row.appendChild(datesCell);
+
+            // Actions column (icon placeholder)
+            var actionsCell = document.createElement('td');
+            var actionsIcon = document.createElement('i');
+            actionsIcon.className = 'fas fa-cogs';
+            actionsCell.appendChild(actionsIcon);
+            row.appendChild(actionsCell);
+            caseTableBody.appendChild(row);
+          });
+        }
+
+        // Attach change event listener to the pagination dropdown menu
+        paginateSelect.addEventListener('change', function () {
+          var selectedValue = parseInt(this.value);
+          console.log('Selected Value:', selectedValue);
+          payload.query[3].to = selectedValue;
+          fetchDataWithUpdatedPayload();
+        });
+
+        function updateTtpLengthDiv() {
+          fetch('https://demo2.energysoar.com/base/api/v1/query?name=case-procedures', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+            },
+            mode: 'cors',
+            body: JSON.stringify(payload)
+          })
+            .then(response => {
+              if (response.ok) {
+                return response.json();
+              }
+              throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+              console.log("TTP Data", data);
+              populateTableRows(data);
+              updateTtpLengthDiv(data.length);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function updateTtpLengthDiv(length) {
+          const ttpLengthDiv = document.getElementById("ttp-length");
+          if (length > 15) {
+            ttpLengthDiv.innerHTML = "Fetching Data(15 of " + length + ")";
+          } else {
+            ttpLengthDiv.innerHTML = "Fetching Data(" + length + " of " + length + ")";
+          }
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  });
+
+</script>
+
+<!-- CASE DETAILS -->
+<script>
+  // Wait for the DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get references to the input and button elements
+    var titleInput = document.getElementById('titleInput');
+    var saveButton = document.getElementById('saveButton');
+    var cancelButton = document.getElementById('cancelButton');
+    var editButtons = document.querySelector('.edit-btns');
+
+    var assigneeInput = document.getElementById('assigneeInput');
+    var assigneeInput = document.getElementById('assigneeInput');
+    var saveAssignButton = document.getElementById('saveAssignButton');
+    var cancelAssignButton = document.getElementById('cancelAssignButton');
+    var assigneeSelect = document.getElementById('assigneeSelect');
+    // var saveAssignButton = document.getElementById('saveAssignButton');
+    // var cancelAssignButton = document.getElementById('cancelAssignButton');
+
+    const payload = {
+      "query": [
+        {
+          "_name": "getCase",
+          "idOrName": localStorage.getItem("ID")
+        },
+        {
+          "_name": "assignableUsers"
+        },
+        {
+          "_name": "filter",
+          "_field": "locked",
+          "_value": false
+        },
+        {
+          "_name": "sort",
+          "_fields": [
+            {
+              "name": "asc"
+            }
+          ]
+        }
+      ]
+    }
+    fetch('https://demo2.energysoar.com/base/api/v1/query', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Populate the select element with organization options
+        data.forEach(organization => {
+          var option = document.createElement('option');
+          option.value = organization.login; // Use login key value as option value
+          option.textContent = organization.organisation + "/" + organization.name;
+          assigneeSelect.appendChild(option);
+
+          // Check if login value matches assigneeInput value
+          if (organization.login === assigneeInput.value) {
+            option.selected = true; // Mark option as selected
+          }
+        });
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        // Optionally, handle errors
+      });
+
+    // Event listener for save button click
+    saveAssignButton.addEventListener('click', function () {
+      // Handle save button click
+      // You can add your logic here
+    });
+
+    // Event listener for cancel button click
+    cancelAssignButton.addEventListener('click', function () {
+      // Handle cancel button click
+      // You can add your logic here
+    });
+    var assignButtons = document.querySelector('.assign-btns');
+
+    // HIDE TITLE BUTTONS
+    function hideButtons() {
+      editButtons.style.display = 'none';
+    }
+    editButtons.style.display = 'none';
+    titleInput.addEventListener('focus', function () {
+      editButtons.style.display = 'inline-flex';
+    });
+    // titleInput.addEventListener('blur', function () {
+    //   hideButtons();
+    // });
+    // saveButton.addEventListener('click', function () {
+    //   hideButtons();
+    // });
+    cancelButton.addEventListener('click', function () {
+      hideButtons();
+    });
+
+
+  });
+
+
+</script>
+
+<!-- ON TITLE CHANGE -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const titleInput = document.getElementById('titleInput');
+    const saveButton = document.getElementById('saveButton');
+    const cancelButton = document.getElementById('cancelButton');
+    let originalValue = '';
+
+    // Save Button Click Event
+    saveButton.addEventListener('click', function () {
+      const inputValue = titleInput.value;
+      const payload = { title: inputValue };
+
+      // Make API call
+      fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          // Check if response status is 204
+          if (response.status === 204) {
+            // Handle 204 response (No Content)
+            console.log('No content returned from the server');
+            // Optionally hide buttons
+            saveButton.style.display = "none";
+            cancelButton.style.display = "none";
+            return; // Exit the promise chain
+          }
+          return response.json(); // Parse JSON from the response
+        })
+        .then(data => {
+          if (data) {
+            
+          }
+          getDetails()
+          // Optionally, handle successful response
+          saveButton.style.display = "none";
+          cancelButton.style.display = "none";
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          // Optionally, handle errors
+          saveButton.style.display = "none";
+          cancelButton.style.display = "none";
+        });
+    });
+
+    // Cancel Button Click Event
+    cancelButton.addEventListener('click', function () {
+      titleInput.value = originalValue;
+    });
+
+    // Store original value when page loads
+    originalValue = titleInput.value;
+  });
+</script>
+
+<!-- SEVERITY CHANGE -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const severityList = document.getElementById('severityList');
+    const liElements = severityList.getElementsByTagName('li');
+
+    // Function to make API call
+    function fetchData(severity) {
+      const payload = { severity: severity }; // Change title to severity
+
+      // Make API call
+      fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          
+          getDetails();
+          // Optionally, handle successful response
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          // Optionally, handle errors
+        });
+    }
+
+    // Event listener for each severity li element
+    for (let i = 0; i < liElements.length; i++) {
+      liElements[i].addEventListener('click', function () {
+        // Hide all li elements except the clicked one
+        for (let j = 0; j < liElements.length; j++) {
+          if (j !== i) {
+            liElements[j].style.display = 'none';
+          }
+        }
+        const severity = parseInt(this.dataset.severity); // Get severity value from data-severity attribute
+        fetchData(severity); // Call fetchData function with the selected severity
+      });
+    }
+  });
+</script>
+
+<!-- TLP CHANGE -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tlpList = document.getElementById('tlpList');
+    const liElements = tlpList.getElementsByTagName('li');
+
+    // Function to make API call
+    function fetchData(tlp) {
+      const payload = { tlp: tlp }; // Change title to tlp
+
+      // Make API call
+      fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          
+          getDetails();
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          // Optionally, handle errors
+        });
+    }
+
+    // Event listener for each tlp li element
+
+    for (let i = 0; i < liElements.length; i++) {
+      liElements[i].addEventListener('click', function () {
+        for (let j = 0; j < liElements.length; j++) {
+          if (j !== i) {
+            liElements[j].style.display = 'none';
+          }
+        }
+        const tlp = parseInt(this.dataset.tlp); // Get tlp value from data-tlp attribute
+        fetchData(tlp); // Call fetchData function with the selected severity
+      });
+    }
+  });
+</script>
+
+<!-- PAP CHANGE -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const papList = document.getElementById('papList');
+    const liElements = papList.getElementsByTagName('li');
+
+    // Function to make API call
+    function fetchData(pap) {
+      const payload = { pap: pap }; // Change title to pap
+
+      // Make API call
+      fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          
+          getDetails();
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          // Optionally, handle errors
+        });
+    }
+
+    // Event listener for each pap li element
+    for (let i = 0; i < liElements.length; i++) {
+      liElements[i].addEventListener('click', function () {
+        for (let j = 0; j < liElements.length; j++) {
+          if (j !== i) {
+            liElements[j].style.display = 'none';
+          }
+        }
+        const pap = parseInt(this.dataset.pap); // Get pap value from data-pap attribute
+        fetchData(pap); // Call fetchData function with the selected severity
+      });
+    }
+  });
+</script>
+
+<!-- ASSIGNEE CHANGE -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const assigneeInput = document.getElementById('assigneeSelect');
+    const saveButton = document.getElementById('saveAssignButton');
+    const cancelButton = document.getElementById('cancelAssignButton');
+    let originalValue = '';
+
+    // Save Button Click Event
+    saveButton.addEventListener('click', function () {
+      const inputValue = assigneeInput.value;
+      const payload = { assignee: inputValue };
+
+      // Make API call
+      fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+            saveButton.style.display = "none";
+            cancelButton.style.display = "none"
+          }
+          return response.json();
+        })
+        .then(data => {
+          
+          // Optionally, handle successful response
+          saveButton.style.display = "none";
+          cancelButton.style.display = "none"
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          saveButton.style.display = "none";
+          cancelButton.style.display = "none"
+          // Optionally, handle errors
+        });
+    });
+
+    // Cancel Button Click Event
+    cancelButton.addEventListener('click', function () {
+      assigneeInput.value = originalValue;
+    });
+
+    // Store original value when page loads
+    originalValue = assigneeInput.value;
+  });
+</script>
+
+<!-- TAGS CHANGE -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const assigneeInput = document.getElementById('assigneeSelect');
+    const saveButton = document.getElementById('tagsSave');
+    const cancelButton = document.getElementById('tagsCancel');
+
+    console.log("selectedTags", selectedTags)
+
+    // Save Button Click Event
+    saveButton.addEventListener('click', function () {
+      const payload = { tags: selectedTags };
+
+      // Make API call
+      fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+            saveButton.style.display = "none";
+            cancelButton.style.display = "none"
+          }
+        })
+        .then(data => {
+          console.log('API response:', data);
+          // Optionally, handle successful response
+          saveButton.style.display = "none";
+          cancelButton.style.display = "none"
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          saveButton.style.display = "none";
+          cancelButton.style.display = "none"
+          // Optionally, handle errors
+        });
+    });
+  });
+
+</script>
+
+<!-- ON TITLE CHANGE -->
+<!-- <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const titleInput = document.getElementById('titleInput');
+    const saveButton = document.getElementById('saveButton');
+    const cancelButton = document.getElementById('cancelButton');
+    let originalValue = '';
+
+    // Save Button Click Event
+    saveButton.addEventListener('click', function () {
+      const inputValue = titleInput.value;
+      const payload = { title: inputValue };
+
+      // Make API call
+      fetch('https://demo2.energysoar.com/base/api/v1/case/' + localStorage.getItem("ID"), {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0',
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          // Check if response status is 204
+          if (response.status === 204) {
+            // Handle 204 response (No Content)
+            console.log('No content returned from the server');
+            // Optionally hide buttons
+            saveButton.style.display = "none";
+            cancelButton.style.display = "none";
+            return; // Exit the promise chain
+          }
+          return response.json(); // Parse JSON from the response
+        })
+        .then(data => {
+          if (data) {
+            console.log('API response:', data);
+          }
+          getDetails()
+          // Optionally, handle successful response
+          saveButton.style.display = "none";
+          cancelButton.style.display = "none";
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+          // Optionally, handle errors
+          saveButton.style.display = "none";
+          cancelButton.style.display = "none";
+        });
+    });
+
+    // Cancel Button Click Event
+    cancelButton.addEventListener('click', function () {
+      titleInput.value = originalValue;
+    });
+
+    // Store original value when page loads
+    originalValue = titleInput.value;
+  });
+</script> -->
+
+
+<!-- TOGGLE TASK -->
+<script>
+  $(document).ready(function () {
+    $("#add-task").click(function () {
+      $("#addtaskMain").toggleClass("showTask");
+    });
+
+    $("#task-check-cancel").click(function () {
+      $("#addtaskMain").removeClass("showTask");
+    })
+  });
+
+  document.getElementById("task-check-add").addEventListener("click", function () {
+    sendDataToAPI();
+    console.log("DONEE");
+  });
+
+  function sendDataToAPI() {
+    console.log("DONEE 2");
+    var selectedGroup = document.getElementById("task-group").value;
+    var taskTitle = document.getElementById("task-input-val").value;
+
+    console.log("selectedGroup", selectedGroup);
+    console.log("taskTitle", taskTitle);
+
+    // Check if both group and title are selected
+    if (selectedGroup && taskTitle) {
+      var payload = {
+        group: selectedGroup,
+        status: "waiting",
+        title: taskTitle
+      };
+
+      // Make AJAX request to the API
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", 'https://demo2.energysoar.com/base/api/case/' + localStorage.getItem("ID") + '/task?flag=false');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.setRequestHeader('Authorization', 'Bearer Q+qU3Kgmk14V6RQKAUoI0Ut5iuZhc+H0');
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          console.log("Task added successfully:", xhr.responseText);
+        } else {
+          console.error("Error adding task:", xhr.statusText);
+        }
+      };
+      xhr.onerror = function () {
+        console.error("Error adding task:", xhr.statusText);
+      };
+      xhr.send(JSON.stringify(payload));
+    }
+  }
+</script>
+
+<script>
+$(document).ready(function () {
+    // Function to clear all filters
+    function clearAllFilters() {
+        $('.filter-option').val('').change();
+    }
+
+    $('.add-filters button').click(function () {
+        var filterOption = $(
+            '<div class="filter">' +
+            '<select class="filter-option">' +
+            '<option value="" selected disabled>Select a Filter</option>' +
+            '<option value="assignee">assignee</option>' +
+            '<option value="endDate">endDate</option>' +
+            '<option value="description">description</option>' +
+            '<option value="order">order</option>' +
+            '<option value="status">status</option>' +
+            '<option value="actionRequired">actionRequired</option>' +
+            '<option value="dueDate">dueDate</option>' +
+            '<option value="flag">flag</option>' +
+            '<option value="title">title</option>' +
+            '<option value="startDate">startDate</option>' +
+            '<option value="group">group</option>' +
+            '<option value="_createdAt">_createdAt</option>' +
+            '<option value="_createdBy">_createdBy</option>' +
+            '<option value="_updatedBy">_updatedBy</option>' +
+            '<option value="_updatedAt">_updatedAt</option>' +
+            '</select>' +
+            '<i class="fa fa-times close"></i>' +
+            '</div>');
+        $('.add-filters').append(filterOption);
+    });
+
+    // Delegate change event listener to dynamically added elements
+    $(document).on('change', '.filter-option', function () {
+        var selectedOption = $(this).val();
+        $('.filter-input').hide();
+        $('#' + selectedOption + '-input').show();
+    });
+
+    $(document).on('click', '.filter .close', function () {
+        $(this).parent('.filter').remove();
+    });
+
+    // Attach click event listener to the Clear All button
+    $('#clearFilters').click(function () {
+        clearAllFilters();
+    });
+
+    // Attach click event listener to the Search button
+    $('#searchFilter').click(function () {
+        // Add your search functionality here
+    });
+});
+
+</script>
+
+
+</html>
